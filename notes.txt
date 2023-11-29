@@ -1,0 +1,3 @@
+npm install @mui/material
+npm install @mui/icons-material
+npm install @mui/material@latest @emotion/react@latest @emotion/styled@latest
