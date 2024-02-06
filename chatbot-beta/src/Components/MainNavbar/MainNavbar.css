@@ -1,0 +1,84 @@
+/* Navbar.css */
+.navbar {
+  top: 0px;
+  z-index: 3;
+  position: sticky;
+  padding: 5px;
+  background-color: #2b218d;
+  color: white;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  overflow-x: auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  align-self: center;
+}
+
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  margin: 3px 0;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+  align-self: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  padding-right: 10px;
+  color: white;
+}
+.burger-menu-items{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.burger-menu-items a {
+    text-decoration: none;
+  color: white;
+    padding-bottom: 10px;
+    font-size: larger;
+    font-weight: bold;
+}
+
+ 
+
+
+/* Media query for mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    text-align: center;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .burger-menu {
+    display: flex;
+  }
+}
