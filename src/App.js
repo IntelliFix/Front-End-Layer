@@ -6,8 +6,8 @@ import Codefixer from './Components/Codefixer/CodeFixer.js';
 function App() {
   return (
     <div className='main'> 
-      {/* <Chatbot/> */}
-      <Codefixer/>
+      <Chatbot/>
+      {/* <Codefixer/> */}
     </div>
   );
 }

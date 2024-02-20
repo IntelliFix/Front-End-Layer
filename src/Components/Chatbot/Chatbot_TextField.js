@@ -16,6 +16,20 @@ function MultilineTextFields() {
         setInputText('');
       }
     };
+
+    const handleAnswerClick = () => {
+      if (inputText.trim() !== '') {
+        setMessages((prevMessages) => [...prevMessages, { text: inputText, type: 'ai' }]);
+        setInputText('');
+      }
+    };
+
+    // const handleAskClick = (messageType) => {
+    //   if (inputText.trim() !== '') {
+    //     setMessages((prevMessages) => [...prevMessages, { text: inputText, type: messageType }]);
+    //     setInputText('');
+    //   }
+    // };
   
     const textFieldStyle = {
       backgroundColor: '#93B1A6',
@@ -36,7 +50,8 @@ function MultilineTextFields() {
         autoComplete="off"
       >
         <div>
-        <ChatArea messages={messages} />
+        <ChatArea messages={messages}
+        />
         </div>
         <div>
           {/* Input field */}
@@ -45,6 +60,7 @@ function MultilineTextFields() {
             label="Ask anything..."
             placeholder="ex: what's AI?"
             multiline
+            rows={3}
             variant="filled"
             style={textFieldStyle}
             value={inputText}
@@ -59,6 +75,15 @@ function MultilineTextFields() {
           onClick={handleAskClick}
         >
           Ask
+        </Button>
+        <Button
+          className='buttons'
+          variant="contained"
+          endIcon={<SendIcon />}
+          style={buttonStyle}
+          onClick={handleAnswerClick}
+        >
+          AI
         </Button>
       </Box>
     );

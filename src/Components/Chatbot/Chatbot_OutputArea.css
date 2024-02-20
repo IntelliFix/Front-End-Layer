@@ -7,6 +7,8 @@
     border-radius: 10px;
     min-height: 200px;
     overflow-y: auto;
+    height: 10em;
+    overflow-y: auto;
   }
   
   .chat-bubble {

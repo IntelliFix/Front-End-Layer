@@ -18,7 +18,7 @@ ChatBubble.propTypes = {
 const ChatArea = ({ messages }) => (
   <div className="chat-area">
     {messages.map((message, index) => (
-      <ChatBubble key={index} text={message.text} type={message.type} />
+      <ChatBubble key={index} text={message.text} type={message.type}/>
     ))}
   </div>
 );
