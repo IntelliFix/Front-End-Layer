@@ -32,10 +32,12 @@ function MultilineTextFields() {
     // };
   
     const textFieldStyle = {
-      backgroundColor: '#93B1A6',
+      backgroundColor: '#EDEDED',
+      borderRadius: '10px',
     };
   
     const buttonStyle = {
+      backgroundColor: '#393E46',
       margin: '10px',
     };
   
@@ -61,7 +63,10 @@ function MultilineTextFields() {
             placeholder="ex: what's AI?"
             multiline
             rows={3}
-            variant="filled"
+            variant="outlined"
+            InputProps={{
+              style: textFieldStyle,
+            }}
             style={textFieldStyle}
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}

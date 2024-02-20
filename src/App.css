@@ -1,6 +1,7 @@
+/* @import "MyColors.json"; */
+
 body{
-  /* background-color: #1E1E1E; */
-  background-color: #1E1E2C;
+  background-color: #101415;
 }
 
 .body {
@@ -11,10 +12,10 @@ body{
 }
 
 .chat-container{
-  background-color: #3F3F3F;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 10px;
+  background-color: #393E46;
+  /* margin: 20px; */
+  padding: 5px;
+  border-radius: 20px;
 }
 
 .buttons{

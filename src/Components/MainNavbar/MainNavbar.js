@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './MainNavbar.css';
 import SwipeableTemporaryDrawer from './Drawer';
+import { NavLink } from 'react-bootstrap';
 
 
 const Navbar = () => {
@@ -15,8 +16,8 @@ const Navbar = () => {
         <SwipeableTemporaryDrawer/>
         <div className="logo">IntellFix</div>
         <div className={`nav-links ${isActive ? 'active' : ''}`}>
-          <a href="#chatbot">Chatbot</a>
-          <a href="#chatfixer">Code Fixer</a>
+          <a href="..\Chatbot\Chatbot.js">Chatbot</a>
+          <a href="..\Codefixer\Codefixer.js">Code Fixer</a>
         </div>
     </div>
   );
