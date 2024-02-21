@@ -62,7 +62,7 @@ function Views() {
               style: {
                 color: 'white',
                 border: '1px solid white',
-                backgroundColor: '#3F3F3F',
+                backgroundColor: '#393E46',
               },
             }}
             style={textFieldStyle}
@@ -112,7 +112,7 @@ function Views() {
             style: {
               color: 'white',
               border: '1px solid white',
-              backgroundColor: '#3F3F3F',
+              backgroundColor: '#393E46',
             },
           }}
           style={textFieldStyle}
