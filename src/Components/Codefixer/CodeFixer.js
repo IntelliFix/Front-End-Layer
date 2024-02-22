@@ -1,5 +1,5 @@
 import './CodeFixer.css';
-import Options from '../Codefixer_options/Options.js';
+import MainView from './MainView.js';
 import Navbar from '../MainNavbar/MainNavbar.js';
 
 
@@ -7,7 +7,7 @@ function Codefixer() {
   return (
     <div className="main-container">
       <Navbar/>
-      <Options/>
+      <MainView/>
     </div>
   );
 }

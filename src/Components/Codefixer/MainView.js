@@ -7,7 +7,7 @@ const textFieldStyle = {
   width: '400px',
 };
 
-function Views() {
+function MainView() {
   return (
     <div className="main-container">
       <div className='views'>
@@ -125,4 +125,4 @@ function Views() {
     </div>
   );
 }
-export default Views
+export default MainView
