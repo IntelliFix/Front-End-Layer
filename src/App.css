@@ -11,13 +11,6 @@ body{
   align-items: center;
 }
 
-.chat-container{
-  background-color: #393E46;
-  /* margin: 20px; */
-  padding: 5px;
-  border-radius: 20px;
-}
-
 .buttons{
   margin:10px;
 }
