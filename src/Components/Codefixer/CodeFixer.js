@@ -6,7 +6,6 @@ import Navbar from '../MainNavbar/MainNavbar.js';
 function Codefixer() {
   return (
     <div className="main-container">
-      <Navbar/>
       <MainView/>
     </div>
   );

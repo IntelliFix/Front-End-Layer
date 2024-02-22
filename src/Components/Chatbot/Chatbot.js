@@ -7,7 +7,6 @@ import Strings from '../../MyStrings.json';
 function Chatbot() {
   return (
     <div className='main'> 
-      <Navbar/>
       <div className='body'>
       <h1 className='title'>{Strings.chat}</h1>
       <div className="chat-container">

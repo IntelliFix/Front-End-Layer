@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './MainNavbar.css';
 import SwipeableTemporaryDrawer from './Drawer';
-import { NavLink } from 'react-bootstrap';
-
+import { Nav } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
@@ -13,11 +13,11 @@ const Navbar = () => {
 
   return (
     <div className={`navbar ${isActive ? 'active' : ''}`}>
-        <SwipeableTemporaryDrawer/>
-        <div className="logo">IntellFix</div>
+      <SwipeableTemporaryDrawer />
+      <NavLink className="logo" to="">IntellFix</NavLink>
         <div className={`nav-links ${isActive ? 'active' : ''}`}>
-          <a href="..\Chatbot\Chatbot.js">Chatbot</a>
-          <a href="..\Codefixer\Codefixer.js">Code Fixer</a>
+          <NavLink className="pages" to="/Chatbot">Chatbot</NavLink>
+          <NavLink className="pages" to="/Codefixer">Code Fixer</NavLink>
         </div>
     </div>
   );
