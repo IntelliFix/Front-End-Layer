@@ -1,6 +1,8 @@
 import TextField from '@mui/material/TextField';
 import './Options.css';
+import ButtonBar from '../Button/Button_Bar';
 import { colors } from '@mui/material';
+import { Button } from 'bootstrap';
 
 const textFieldStyle = {
   margin: '8px',
@@ -14,6 +16,9 @@ function Views() {
         <button>Buggy</button>
         <button>Side-by-Side</button>
         <button>Corrected</button>
+      </div>
+      <div>
+        <ButtonBar/>
       </div>
 
       <div className='codefixer-area'>
