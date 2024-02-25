@@ -4,7 +4,7 @@
   z-index: 3;
   position: sticky;
   padding: 5px;
-  background-color: #2b218d;
+  background-color: #393E46;
   color: white;
   overflow: hidden;
   display: flex;
@@ -14,6 +14,7 @@
 }
 
 .logo {
+  color: whitesmoke;
   font-size: 1.5rem;
   font-weight: bold;
   align-self: center;
@@ -32,6 +33,7 @@
   margin: 3px 0;
 }
 
+
 .nav-links {
   display: flex;
   justify-content: flex-end;
@@ -39,11 +41,12 @@
   align-self: center;
 }
 
-.nav-links a {
+.pages{
   text-decoration: none;
   padding-right: 10px;
   color: white;
 }
+
 .burger-menu-items{
     display: flex;
     flex-direction: column;

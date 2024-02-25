@@ -10,10 +10,14 @@
   display: flex;
   flex-direction: row;
   align-self: center;
+  border-radius: 15px;
 }
 
 .views button {
-  margin: 10px;
+  font-size: large;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: #EDEDED;
 }
 
 /* ------- */

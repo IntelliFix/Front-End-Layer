@@ -1,0 +1,61 @@
+/* ChatArea.css */
+
+.chat-container {
+  background-color: #393e46;
+  /* margin: 20px; */
+  padding: 5px;
+  border-radius: 20px;
+  width: 500px;
+}
+
+.chatbot {
+  background-color: none;
+  width: 500px;
+}
+
+.chat-area {
+  margin: 10px;
+  border-radius: 10px;
+  min-height: 300px;
+  overflow-y: auto;
+  height: 10em;
+  overflow-y: auto;
+}
+
+.chat-bubble {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.user-bubble {
+  background-color: #101415;
+  color: #e0e0e0;
+  text-align: right;
+}
+
+.other-bubble {
+  background-color: #e0e0e0;
+  text-align: left;
+}
+
+/* chat input text */
+
+.chat-input-holder {
+  padding: 12px;
+  /* width: max-content; */
+}
+
+.chat-input-textarea {
+  padding-right: 30px;
+  background-color: #101415;
+  width: 450px;
+  padding: 12px;
+  border-radius: 5px;
+  color: white;
+  font-size: 1.25em;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 8px 0 rgb(0, 0, 0, 0.5);
+}

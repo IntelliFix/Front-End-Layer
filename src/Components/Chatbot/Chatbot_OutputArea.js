@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Chatbot_OutputArea.css';
+import './Chatbot.css';
 
 const ChatBubble = ({ text, type }) => (
   <div style={{ textAlign: type === 'user' ? 'right' : 'left', margin: '5px' }}>
@@ -16,7 +16,7 @@ ChatBubble.propTypes = {
 };
 
 const ChatArea = ({ messages }) => (
-  <div className="chat-area">
+  <div className='chat-area'>
     {messages.map((message, index) => (
       <ChatBubble key={index} text={message.text} type={message.type} />
     ))}

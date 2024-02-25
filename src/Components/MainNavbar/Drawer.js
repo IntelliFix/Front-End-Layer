@@ -45,7 +45,7 @@ export default function SwipeableTemporaryDrawer() {
           onOpen={toggleDrawer(true)}
           PaperProps={{
             style: {
-              backgroundColor: '#2b218d',
+              backgroundColor: '#393E46',
             },
           }}
         >

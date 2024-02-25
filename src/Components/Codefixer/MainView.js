@@ -9,7 +9,7 @@ const textFieldStyle = {
   width: '400px',
 };
 
-function Views() {
+function MainView() {
   return (
     <div className="main-container">
       <div className='views'>
@@ -67,7 +67,7 @@ function Views() {
               style: {
                 color: 'white',
                 border: '1px solid white',
-                backgroundColor: '#3F3F3F',
+                backgroundColor: '#393E46',
               },
             }}
             style={textFieldStyle}
@@ -117,7 +117,7 @@ function Views() {
             style: {
               color: 'white',
               border: '1px solid white',
-              backgroundColor: '#3F3F3F',
+              backgroundColor: '#393E46',
             },
           }}
           style={textFieldStyle}
@@ -130,4 +130,4 @@ function Views() {
     </div>
   );
 }
-export default Views
+export default MainView

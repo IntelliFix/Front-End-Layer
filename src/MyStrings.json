@@ -1,5 +1,6 @@
 {
-    "input_area": "Input area",
+  "chat": "Let's chat",
+    "ask_button": "Ask",
     "output_area": "Output area",
     "output_comments": "Output Comments",
     "corrected": "Corrected",
