@@ -3,6 +3,8 @@ import './Options.css';
 import ButtonBar from '../Button/Button_Bar';
 import { colors } from '@mui/material';
 import { Button } from 'bootstrap';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const textFieldStyle = {
   margin: '8px',
@@ -10,6 +12,11 @@ const textFieldStyle = {
 };
 
 function MainView() {
+
+  const [code, setCode] = useState('');
+  const [comment, setComment] = useState('');
+
+
   return (
     <div className="main-container">
       <div className='views'>
@@ -43,6 +50,10 @@ function MainView() {
             },
           }}
           style={textFieldStyle}
+          value={code}
+          onChange={(e)=> setCode(e.target.value)}
+          placeholder="Enter code JSON"
+
           />
 
           <TextField
@@ -71,6 +82,9 @@ function MainView() {
               },
             }}
             style={textFieldStyle}
+            onChange={(e)=> setComment(e.target.value)}
+            value={comment}
+            placeholder="Enter code JSON"
 
           />
         </div>
@@ -125,6 +139,19 @@ function MainView() {
         </div>
 
       </div>
+      <button className='submit-button' onClick={
+        async ()=>{
+          await axios
+          .post('https://integration-layer-pb5xmvfa7a-uc.a.run.app/code-fixer', {
+            code: code,
+            comment: comment
+          }).then((res) => {
+            console.log(res.data);
+          }).catch((err) => {
+            console.log(err);
+          });
+        }
+      }>Submit</button>
 
 
     </div>
