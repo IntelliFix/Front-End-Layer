@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import ChatArea from './Chatbot_OutputArea';
 import './Chatbot.css';
+import ApiHandler from '../../ApiHandler/ApiHandler';
+
 
 
 function MultilineTextFields() {
@@ -12,32 +14,29 @@ function MultilineTextFields() {
     const [inputText, setInputText] = useState('');
     const [messages, setMessages] = useState([]);
 
-    const handleAskClick = () => {
-        if (inputText.trim() !== '') {
-            setMessages((prevMessages) => [...prevMessages, { text: inputText, type: 'user' }]);
-            setInputText('');
+    const handleClick = async () => {
+        try {
+            if (inputText.trim() !== '') {
+                setMessages((prevMessages) => [...prevMessages, { text: inputText, type: 'user' }]);
+                setInputText('');
+
+                const response = await ApiHandler.submitMessage(inputText);
+                const responseData = response.data.output;
+
+                setMessages((prevMessages) => [...prevMessages, { text: responseData, type: 'ai' }]);
+                console.log(responseData);
+            }
+        } catch (error) {
+            console.log(error);
         }
     };
-
-    const handleAnswerClick = () => {
-        if (inputText.trim() !== '') {
-            setMessages((prevMessages) => [...prevMessages, { text: inputText, type: 'ai' }]);
-            setInputText('');
-        }
-    };
-
-    // const handleAskClick = (messageType) => {
-    //   if (inputText.trim() !== '') {
-    //     setMessages((prevMessages) => [...prevMessages, { text: inputText, type: messageType }]);
-    //     setInputText('');
-    //   }
-    // };
 
     const textFieldStyle = {
         backgroundColor: '#EDEDED',
         borderRadius: '10px',
         border: 0,
         outline: 0,
+        width: '450px',
     };
 
     const buttonStyle = {
@@ -46,66 +45,58 @@ function MultilineTextFields() {
     };
 
     return (
-        <div className='chatbot'>
-            <div>
-                <ChatArea messages={messages} />
-            </div>
-            <div className='chat-input-holder' >
-                <textarea
-                    rows='1'
-                    className='chat-input-textarea'
-                    placeholder='Type your question...' >
-                </textarea>
-            </div>
-        </div>
-
-
-        // <Box
-        //     component="form"
-        //     sx={{
-        //         '& .MuiTextField-root': { m: 1, width: '75ch' },
-        //     }}
-        //     noValidate
-        //     autoComplete="off">
-
+        // <div className='chatbot'>
         //     <div>
         //         <ChatArea messages={messages} />
         //     </div>
-        //     <div>
-        //         {/* Input field */}
-        //         <TextField
-        //             id="filled-textarea"
-        //             label="Ask anything..."
-        //             placeholder="ex: what's AI?"
-        //             multiline
-        //             rows={1}
-        //             variant="outlined"
-        //             InputProps={{
-        //                 style: textFieldStyle,
-        //             }}
-        //             style={textFieldStyle}
-        //             value={inputText}
-        //             onChange={(e) => setInputText(e.target.value)}
-        //         />
+        //     <div className='chat-input-holder' >
+        //         <textarea
+        //             rows='1'
+        //             className='chat-input-textarea'
+        //             placeholder='Type your question...' >
+        //         </textarea>
         //     </div>
-        //     <Button
-        //         className='buttons'
-        //         variant="contained"
-        //         endIcon={<SendIcon />}
-        //         style={buttonStyle}
-        //         onClick={handleAskClick}>
-        //         Ask
-        //     </Button>
-        //     <Button
-        //         className='buttons'
-        //         variant="contained"
-        //         endIcon={<SendIcon />}
-        //         style={buttonStyle}
-        //         onClick={handleAnswerClick}
-        //     >
-        //         AI
-        //     </Button>
-        // </Box>
+        // </div>
+
+
+        <Box
+            component="form"
+            sx={{
+                '& .MuiTextField-root': { m: 1, width: '75ch' },
+            }}
+            noValidate
+            autoComplete="off">
+
+            <div>
+                <ChatArea messages={messages} />
+            </div>
+            <div>
+                {/* Input field */}
+                <TextField
+                    className='chat-input-area'
+                    id="filled-textarea"
+                    label="Ask anything..."
+                    placeholder="ex: what's AI?"
+                    multiline
+                    rows={1}
+                    variant="outlined"
+                    InputProps={{
+                        style: textFieldStyle,
+                    }}
+                    style={textFieldStyle}
+                    value={inputText}
+                    onChange={(e) => setInputText(e.target.value)}
+                />
+            </div>
+            <Button
+                className='buttons'
+                variant="contained"
+                endIcon={<SendIcon />}
+                style={buttonStyle}
+                onClick={handleClick}>
+                Ask
+            </Button>
+        </Box>
     );
 }
 
