@@ -41,14 +41,7 @@ function Signup() {
             
             console.log(data);
 
-            // const res = await axios
-            // .post(Url + '/signup', {
-            //     body: JSON.stringify({ email, password, name, phoneNumber }),
-            //     headers: { 'Content-Type': 'application/json' }
-            // });
-
-            // const data = await res.json();
-            // console.log(data);
+            
 
             if (data.errors) {
                 setEmailError(data.errors.email);
@@ -58,9 +51,15 @@ function Signup() {
             }
 
             if (data.user) {
+                // Save token to localStorage
+                // Use
+                // const token = localStorage.getItem('token');
+                // to access the token in other components
+                localStorage.setItem('token', data.user);
+
                 // Redirect to the next page after successful signup
                 // Replace '/' with the desired URL
-                window.location.assign('/login');
+                window.location.assign('/');
             }
 
         } catch (err) {
