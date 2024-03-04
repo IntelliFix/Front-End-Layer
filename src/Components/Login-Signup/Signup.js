@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../Home/home.css'
-
+import axios from 'axios';
 
 function Signup() {
     const [email, setEmail] = useState('');
@@ -13,8 +13,13 @@ function Signup() {
     const [phoneNumberError, setPhoneNumberError] = useState('');
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        const Url = 'https://integration-layer-pb5xmvfa7a-uc.a.run.app'
 
+        e.preventDefault();
+        console.log(email);
+        console.log(password);
+        console.log(name);
+        console.log(phoneNumber);
         // Reset errors every time the user enters valid input
         setEmailError('');
         setPasswordError('');
@@ -22,14 +27,28 @@ function Signup() {
         setPhoneNumberError('');
 
         try {
-            const res = await fetch('/signup', {
+            console.log('sending request');
+            const body = JSON.stringify({ email, password, name, phoneNumber });
+            console.log(body);
+
+
+            const res = await fetch(`${Url}/signup`, {
                 method: 'POST',
                 body: JSON.stringify({ email, password, name, phoneNumber }),
                 headers: { 'Content-Type': 'application/json' }
             });
-
             const data = await res.json();
+            
             console.log(data);
+
+            // const res = await axios
+            // .post(Url + '/signup', {
+            //     body: JSON.stringify({ email, password, name, phoneNumber }),
+            //     headers: { 'Content-Type': 'application/json' }
+            // });
+
+            // const data = await res.json();
+            // console.log(data);
 
             if (data.errors) {
                 setEmailError(data.errors.email);
@@ -41,7 +60,7 @@ function Signup() {
             if (data.user) {
                 // Redirect to the next page after successful signup
                 // Replace '/' with the desired URL
-                window.location.assign('/');
+                window.location.assign('/login');
             }
 
         } catch (err) {

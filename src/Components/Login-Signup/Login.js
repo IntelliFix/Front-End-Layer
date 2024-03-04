@@ -8,6 +8,7 @@ function Login() {
     const [passwordError, setPasswordError] = useState('');
 
     const handleSubmit = async (e) => {
+        const Url = 'https://integration-layer-pb5xmvfa7a-uc.a.run.app'
         e.preventDefault();
 
         // Reset errors every time the user enters valid input
@@ -15,24 +16,30 @@ function Login() {
         setPasswordError('');
 
         try {
-            const res = await fetch('/login', {
+            const res = await fetch(`${Url}/login`, {
                 method: 'POST',
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ email, password, }),
                 headers: { 'Content-Type': 'application/json' }
             });
-
             const data = await res.json();
             console.log(data);
+            console.log(data.user);
 
             if (data.errors) {
                 setEmailError(data.errors.email);
                 setPasswordError(data.errors.password);
             }
 
-            if (data.user) {
+            if (data.user ) {
+                // Save token to localStorage
+                // Use 
+                // const token = localStorage.getItem('token');
+                // to access the token in other components
+                localStorage.setItem('token', data.user);
+
                 // Redirect to the next page after successful login
                 // Replace '/' with the desired URL
-                window.location.assign('/');
+                window.location.assign('/home');
             }
         } catch (err) {
             console.log(err);
