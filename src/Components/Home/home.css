@@ -1,0 +1,9 @@
+.home {
+  display: flex;
+  flex-direction: row;
+  align-content: space-evenly;
+}
+
+.forms {
+  background-color: bisque;
+}
