@@ -20,6 +20,7 @@ function Signup() {
         console.log(password);
         console.log(name);
         console.log(phoneNumber);
+
         // Reset errors every time the user enters valid input
         setEmailError('');
         setPasswordError('');
@@ -31,17 +32,14 @@ function Signup() {
             const body = JSON.stringify({ email, password, name, phoneNumber });
             console.log(body);
 
-
             const res = await fetch(`${Url}/signup`, {
                 method: 'POST',
                 body: JSON.stringify({ email, password, name, phoneNumber }),
                 headers: { 'Content-Type': 'application/json' }
             });
             const data = await res.json();
-            
-            console.log(data);
 
-            
+            console.log(data);
 
             if (data.errors) {
                 setEmailError(data.errors.email);
@@ -59,7 +57,7 @@ function Signup() {
 
                 // Redirect to the next page after successful signup
                 // Replace '/' with the desired URL
-                window.location.assign('/');
+                window.location.assign('/Chatbot');
             }
 
         } catch (err) {
