@@ -15,6 +15,7 @@ function Login() {
         setEmailError('');
         setPasswordError('');
 
+        // commit bug
         try {
             const res = await fetch(`${Url}/login`, {
                 method: 'POST',
