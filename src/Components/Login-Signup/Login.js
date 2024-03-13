@@ -31,7 +31,7 @@ function Login() {
                 setPasswordError(data.errors.password);
             }
 
-            if (data.user ) {
+            if (data.user) {
                 // Save token to localStorage
                 // Use 
                 // const token = localStorage.getItem('token');
@@ -40,7 +40,7 @@ function Login() {
 
                 // Redirect to the next page after successful login
                 // Replace '/' with the desired URL
-                window.location.assign('/home');
+                window.location.assign('/Chatbot');
             }
         } catch (err) {
             console.log(err);

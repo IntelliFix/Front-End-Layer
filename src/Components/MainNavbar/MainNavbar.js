@@ -15,10 +15,11 @@ const Navbar = () => {
     <div className={`navbar ${isActive ? 'active' : ''}`}>
       <SwipeableTemporaryDrawer />
       <NavLink className="logo" to="">IntellFix</NavLink>
-        <div className={`nav-links ${isActive ? 'active' : ''}`}>
-          <NavLink className="pages" to="/Chatbot">Chatbot</NavLink>
-          <NavLink className="pages" to="/Codefixer">Code Fixer</NavLink>
-        </div>
+      <div className={`nav-links ${isActive ? 'active' : ''}`}>
+        <NavLink className="pages" to="/Home">Login/Signup</NavLink>
+        <NavLink className="pages" to="/Chatbot">Chatbot</NavLink>
+        <NavLink className="pages" to="/Codefixer">Code Fixer</NavLink>
+      </div>
     </div>
   );
 };
