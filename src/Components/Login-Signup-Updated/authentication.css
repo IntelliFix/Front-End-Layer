@@ -1,0 +1,161 @@
+.authentication-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width:100%
+  }
+  
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    margin: auto;
+    
+  }
+  
+  .card {
+    
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    border: 2px solid transparent; /* Add transparent border */
+    box-sizing: border-box;
+    
+  }
+  
+  .card-front,
+  .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* Add background color */
+    border: 3px solid #333; /* Add border color */
+    box-sizing: border-box;
+    border-radius: 20px;
+  
+  }
+  
+  
+  .right-half {
+    
+    flex: 1;
+  }
+  .left-half{
+ flex: 1;
+ padding-left: 2%;
+  }
+  
+  .right-half form {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .right-half form input {
+    margin-bottom: 5%;
+    padding: 3%;
+    border: 2px solid #333;
+    border-radius: 10px;
+    width: 70%;
+    align-self: center;
+  }
+  
+  .right-half form button {
+    padding: 3%;
+    border: 1px solid #333;
+    border-radius: 5px;
+    width: 70%;
+    align-self: center;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 5%;
+  }
+  
+  /* Apply styles for the flipped state */
+  .card.is-flipped {
+    animation: flipToFront 0.8s ease forwards; /* Apply animation when flipped */
+  
+  }
+  
+  .signup-card {
+    
+    width: 50vh;
+    height: 70vh;
+    right: 0;
+    top: 50%; /* Adjusted to start from the second half of the login card */
+    margin-right: -50vh; 
+    margin-top: -35vh;
+    /* transform: translate(55%, -50%); */
+  
+  }
+  
+  .is-behind{
+    animation: flipToBack 0.8s ease forwards;
+  }
+  
+  .is-front{
+    animation: flipToFront 0.8s ease forwards;
+  }
+  
+  .login-card {
+    
+    width: 90vh;
+    height: 60vh;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.8s;
+    
+  }
+  
+  .login-card.is-flipped {
+    transform: rotateY(180deg);
+  }
+  
+  .card-back {
+    transform: rotateY(180deg);
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  .card-back button {
+    margin-top: 20px;
+  }
+  
+  @keyframes flipToBack {
+    0% {
+      transform: translateX(0); /* Initial position */
+      z-index: 1;
+    }
+    50% {
+      transform: translateX(100%);
+      z-index: -1; /* Set z-index to -1 at 50% of the animation */
+    }
+    100% {
+      transform: translateX(0); /* Translate back to original position */
+      z-index: -1; /* Ensure z-index remains -1 */
+    }
+  }
+  
+  @keyframes flipToFront {
+    0% {
+      transform: translateX(0); /* Initial position */
+      z-index: -1;
+    }
+    50% {
+      transform: translateX(110%);
+      z-index: -1; /* Set z-index to -1 at 50% of the animation */
+    }
+    100% {
+      transform: translateX(0); /* Translate back to original position */
+      z-index: 1; /* Ensure z-index remains 1 */
+    }
+  }
+  

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../Home/home.css'
-import axios from 'axios';
+import '../Home/home.css';
+import ApiHandler from '../../ApiHandler/ApiHandler';
 
 function Signup() {
     const [email, setEmail] = useState('');
@@ -13,56 +13,14 @@ function Signup() {
     const [phoneNumberError, setPhoneNumberError] = useState('');
 
     const handleSubmit = async (e) => {
-        const Url = 'https://integration-layer-pb5xmvfa7a-uc.a.run.app'
-
         e.preventDefault();
-        console.log(email);
-        console.log(password);
-        console.log(name);
-        console.log(phoneNumber);
 
-        // Reset errors every time the user enters valid input
         setEmailError('');
         setPasswordError('');
         setNameError('');
         setPhoneNumberError('');
 
-        try {
-            console.log('sending request');
-            const body = JSON.stringify({ email, password, name, phoneNumber });
-            console.log(body);
-
-            const res = await fetch(`${Url}/signup`, {
-                method: 'POST',
-                body: JSON.stringify({ email, password, name, phoneNumber }),
-                headers: { 'Content-Type': 'application/json' }
-            });
-            const data = await res.json();
-
-            console.log(data);
-
-            if (data.errors) {
-                setEmailError(data.errors.email);
-                setPasswordError(data.errors.password);
-                setNameError(data.errors.name);
-                setPhoneNumberError(data.errors.phoneNumber);
-            }
-
-            if (data.user) {
-                // Save token to localStorage
-                // Use
-                // const token = localStorage.getItem('token');
-                // to access the token in other components
-                localStorage.setItem('token', data.user);
-
-                // Redirect to the next page after successful signup
-                // Replace '/' with the desired URL
-                window.location.assign('/Chatbot');
-            }
-
-        } catch (err) {
-            console.log(err);
-        }
+        ApiHandler.signup(email, password, name, phoneNumber, setEmailError, setPasswordError, setNameError, setPhoneNumberError);
     };
 
     return (
