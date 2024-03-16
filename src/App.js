@@ -13,8 +13,8 @@ function App() {
   return (
     <div className='main'>
       <Navbar />
-      <TitleComponent />
       <Routes>
+        <Route path="/Home" element={<Home />} />
         <Route path="/Authentication" element={<Authentication />} />
         <Route path="/Chatbot" element={<Chatbot />} />
         <Route path="/Codefixer" element={<Codefixer />} />

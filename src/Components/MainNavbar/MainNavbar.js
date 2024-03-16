@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <div className={`navbar ${isActive ? 'active' : ''}`}>
       <SwipeableTemporaryDrawer />
-      <NavLink className="logo" to="">IntellFix</NavLink>
+      <NavLink className="logo" to="/Home">IntellFix</NavLink>
       <div className={`nav-links ${isActive ? 'active' : ''}`}>
         <NavLink className="pages" to="/Authentication">Login/Signup</NavLink>
         <NavLink className="pages" to="/Chatbot">Chatbot</NavLink>

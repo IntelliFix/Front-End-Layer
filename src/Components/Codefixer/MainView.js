@@ -6,6 +6,9 @@ import { Button } from 'bootstrap';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ApiHandler from '../../ApiHandler/ApiHandler';
+import codeeditor from '../Editor/Editor';
+import Editor from "@monaco-editor/react";
+
 
 const textFieldStyle = {
   margin: '8px',
@@ -52,7 +55,7 @@ function MainView() {
 
       <div className='codefixer-area'>
         <div className='inputs'>
-          <TextField
+          {/* <TextField
             focused
             color='secondary'
             className='textfields'
@@ -76,6 +79,21 @@ function MainView() {
             onChange={(e) => setCode(e.target.value)}
             placeholder="Enter code JSON"
 
+          /> */}
+
+          <Editor
+            height="280px"
+            language="python"
+            theme="vs-dark"
+            value={code}
+            // onChange={(e) => setCode(e.target.value)}
+            options={{
+              inlineSuggest: true,
+              fontSize: "16px",
+              formatOnType: true,
+              autoClosingBrackets: true,
+              minimap: { scale: 10 }
+            }}
           />
 
           <TextField
