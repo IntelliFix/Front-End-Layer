@@ -44,6 +44,7 @@ class ApiHandler {
       }
 
       if (data.user) {
+        console.log(data.user);
         localStorage.setItem('token', data.user);
         window.location.assign('/Chatbot');
       }
@@ -71,6 +72,7 @@ class ApiHandler {
       }
 
       if (data.user) {
+        console.log(data.user);
         localStorage.setItem('token', data.user);
         window.location.assign('/Chatbot');
       }

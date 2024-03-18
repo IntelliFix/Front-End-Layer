@@ -1,5 +1,6 @@
 // Login.js
 import React, { useState } from 'react';
+import ApiHandler from '../../ApiHandler/ApiHandler';
 
 const Login = ({ flipSignUp }) => {
   const [logInEmail, setLogInEmail] = useState('');
@@ -7,8 +8,12 @@ const Login = ({ flipSignUp }) => {
   const [logInEmailError, setLogInEmailError] = useState('');
   const [logInPasswordError, setLogInPasswordError] = useState('');
 
-  const handleLogin = () => {
-    // Add your login logic here
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLogInEmailError('');
+    setLogInPasswordError('');
+    console.log('login');
+    await ApiHandler.login(logInEmail, logInPassword);
   };
 
   return (

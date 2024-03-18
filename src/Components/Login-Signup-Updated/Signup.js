@@ -1,16 +1,27 @@
 // Signup.js
 import React, { useState } from 'react';
+import ApiHandler from '../../ApiHandler/ApiHandler';
 
 const Signup = ({ flipSignUp }) => {
   const [signUpName, setSignUpName] = useState('');
   const [signUpEmail, setSignUpEmail] = useState('');
   const [signUpPassword, setSignUpPassword] = useState('');
+  const [signUpPhoneNo, setSignUpPhoneNo] = useState('');
   const [signUpNameError, setSignUpNameError] = useState('');
   const [signUpEmailError, setSignUpEmailError] = useState('');
   const [signUpPasswordError, setSignUpPasswordError] = useState('');
+  const [signUpPhoneNoError, setSignUpPhoneNoError] = useState('');
 
-  const handleSignUp = () => {
-    // Add your sign up logic here
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    setSignUpNameError('');
+    setSignUpEmailError('');
+    setSignUpPasswordError('');
+    setSignUpPhoneNoError('');
+    console.log('signup');
+    await ApiHandler.signup(signUpEmail, signUpPassword, signUpName, signUpPhoneNo, 
+      setSignUpEmailError, setSignUpPasswordError, setSignUpNameError, setSignUpPhoneNoError);
   };
 
   return (
@@ -24,6 +35,14 @@ const Signup = ({ flipSignUp }) => {
             onChange={(e) => setSignUpName(e.target.value)}
             required
           />
+          <div className="name error">{signUpNameError}</div>
+          <input
+            type="text"
+            placeholder="Phone Number"
+            value={signUpPhoneNo}
+            onChange={(e) => setSignUpPhoneNo(e.target.value)}
+            required
+          />
           <input
             type="email"
             placeholder="Email"
@@ -31,6 +50,7 @@ const Signup = ({ flipSignUp }) => {
             onChange={(e) => setSignUpEmail(e.target.value)}
             required
           />
+          <div className="email error">{signUpEmailError}</div>
           <input
             type="password"
             placeholder="Password"
@@ -38,6 +58,7 @@ const Signup = ({ flipSignUp }) => {
             onChange={(e) => setSignUpPassword(e.target.value)}
             required
           />
+          <div className="password error">{signUpPasswordError}</div>
           <button type="button" onClick={handleSignUp}>Sign Up</button>
           <button type="button" onClick={flipSignUp}>Already Have Account?</button>
         </form>
