@@ -13,13 +13,14 @@ const Login = ({ flipSignUp }) => {
     setLogInEmailError('');
     setLogInPasswordError('');
     console.log('login');
-    await ApiHandler.login(logInEmail, logInPassword);
+    await ApiHandler.login(logInEmail, logInPassword,setLogInEmailError, setLogInPasswordError);
   };
 
   return (
     <div className="card-front">
-      <div className="left-half">
-        <h2>Welcome Back!</h2>
+      <div className="left-half" style={{textAlign: 'center'}}>
+        {/*align center*/}
+        <h2  >Welcome Back!</h2>
         <p>Please login to access your account.</p>
       </div>
       <div className="right-half">
@@ -31,7 +32,7 @@ const Login = ({ flipSignUp }) => {
             onChange={(e) => setLogInEmail(e.target.value)}
             required
           />
-          <div className="email error">{logInEmailError}</div>
+          <div className="email error" >{logInEmailError}</div>
 
           <input
             type="password"
