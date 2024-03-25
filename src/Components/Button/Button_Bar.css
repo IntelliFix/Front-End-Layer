@@ -1,6 +1,6 @@
 .views {
   margin: 10px;
-  background-color: #3f3f3f;
+  background-color: #ededed;
   display: flex;
   flex-direction: row;
   align-self: center;
@@ -24,7 +24,7 @@
   width: auto;
 
   margin: 10px;
-  background-color: #3f3f3f;
+  background-color: #ededed;
   display: flex;
   flex-direction: row;
   align-self: center;
