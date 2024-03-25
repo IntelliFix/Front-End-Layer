@@ -14,7 +14,7 @@ const textFieldStyle = {
 };
 
 const OutputFieldStyle = {
-  marginTop: '10px',
+  margin: '10px',
   width: 'auto',
   height: 'auto',
 };
