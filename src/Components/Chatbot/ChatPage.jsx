@@ -1,14 +1,17 @@
 import React, { useRef, useState } from "react";
 import { Box, Avatar, Typography, Button, IconButton } from "@mui/material";
 import { IoMdSend } from "react-icons/io";
+import { AiOutlineLoading3Quarters } from "react-icons/ai"; // Import loading icon
 import red from "@mui/material/colors/red";
 import ApiHandler from "../../ApiHandler/ApiHandler";
 import ChatItem from "./ChatItem";
+import ReactLoading from "react-loading";
 
 const Chat = () => {
   const inputRef = useRef(null);
   const [inputText, setInputText] = useState("");
   const [messages, setMessages] = useState([]);
+  const [isTyping, setIsTyping] = useState(false); // State variable to indicate whether the chatbot is typing
 
   const handleSubmit = async () => {
     try {
@@ -18,6 +21,7 @@ const Chat = () => {
           { content: inputText, role: "user" },
         ]);
         setInputText("");
+        setIsTyping(true); // Set isTyping to true when the user submits a message
 
         const response = await ApiHandler.submitMessage(inputText);
         const responseData = response.data.output;
@@ -26,10 +30,11 @@ const Chat = () => {
           ...prevMessages,
           { content: responseData, role: "assistant" },
         ]);
-        console.log(responseData);
+        setIsTyping(false); // Set isTyping to false when the response is received
       }
     } catch (error) {
       console.log(error);
+      setIsTyping(false); // Set isTyping to false in case of an error
     }
   };
 
@@ -72,7 +77,7 @@ const Chat = () => {
               sx={{
                 mx: "auto",
                 my: 2,
-                bgcolor: "white",
+                bgcolor: "#1bf7f3",
                 color: "black",
                 fontWeight: 700,
               }}
@@ -127,19 +132,6 @@ const Chat = () => {
             px: 3,
           }}
         >
-          {/* Chat Title */}
-          {/* <Typography
-          sx={{
-            fontSize: "40px",
-            color: "white",
-            mb: 2,
-            mx: "auto",
-            fontWeight: "600",
-          }}
-        >
-          Python Assistant
-        </Typography> */}
-
           {/* Chat Messages */}
           <Box
             sx={{
@@ -171,40 +163,56 @@ const Chat = () => {
               marginTop: "10rem",
               width: "75%",
               bottom: 3,
-              borderRadius: 8,
+              borderRadius: 45,
               backgroundColor: "rgba(0, 0, 0, 0.3)",
               // borderColor: "white",
-              border: "0.3px solid white",
+              border: "0.3px solid #1bf7f3",
               marginTop: "0.7rem",
               display: "flex",
               margin: "auto",
               backdropFilter: "blur(15px)",
             }}
           >
-            <input
-              ref={inputRef}
-              type="text"
-              style={{
-                width: "100%",
-                backgroundColor: "transparent",
-                padding: "30px",
-                border: "none",
-                outline: "none",
-                color: "white",
-                fontSize: "20px",
-                marginBottom: "0rem",
-              }}
-              value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleSubmit();
-                }
-              }}
-            />
-            <IconButton onClick={handleSubmit} sx={{ color: "white", mx: 1 }}>
-              <IoMdSend />
-            </IconButton>
+            {/* Conditionally render loading icon or send button */}
+            {isTyping ? (
+              <ReactLoading
+                color="white"
+                height={50}
+                width={50}
+                marginLeft={2}
+              />
+            ) : (
+              <input
+                ref={inputRef}
+                type="text"
+                style={{
+                  width: "100%",
+                  backgroundColor: "transparent",
+                  padding: "30px",
+                  border: "none",
+                  outline: "none",
+                  color: "white",
+                  fontSize: "20px",
+                  marginBottom: "0rem",
+                }}
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSubmit();
+                  }
+                }}
+              />
+            )}
+            {/* Conditionally render loading icon or send button */}
+            {!isTyping && (
+              <IconButton
+                onClick={handleSubmit}
+                sx={{ color: "#1bf7f3", mx: 1 }}
+              >
+                <IoMdSend />
+              </IconButton>
+            )}
           </div>
         </Box>
       </Box>
