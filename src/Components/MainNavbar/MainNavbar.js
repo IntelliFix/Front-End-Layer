@@ -24,7 +24,10 @@ const Navbar = () => {
           Login/Signup
         </NavLink>
         <NavLink className="pages" to="/Chatbot">
-          Chatbot
+          Chatbot v1
+        </NavLink>
+        <NavLink className="pages" to="/Test-Chatbot">
+          Chatbot v2
         </NavLink>
         <NavLink className="pages" to="/Codefixer">
           Code Fixer

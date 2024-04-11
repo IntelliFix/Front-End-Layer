@@ -160,16 +160,16 @@ const Chat = () => {
           <div
             style={{
               position: "fixed",
-              marginTop: "10rem",
+              // marginTop: "10rem",
               width: "75%",
-              bottom: 3,
+              bottom: 3, // what this do? it holds the input down but how?
               borderRadius: 45,
               backgroundColor: "rgba(0, 0, 0, 0.3)",
               // borderColor: "white",
               border: "0.3px solid #1bf7f3",
               marginTop: "0.7rem",
               display: "flex",
-              margin: "auto",
+              // marginBottom: "3px", // not workinngg :(
               backdropFilter: "blur(15px)",
             }}
           >
@@ -179,7 +179,7 @@ const Chat = () => {
                 color="white"
                 height={50}
                 width={50}
-                marginLeft={2}
+                margin={3}
               />
             ) : (
               <input
@@ -188,7 +188,7 @@ const Chat = () => {
                 style={{
                   width: "100%",
                   backgroundColor: "transparent",
-                  padding: "30px",
+                  padding: "15px", // it was 30px
                   border: "none",
                   outline: "none",
                   color: "white",

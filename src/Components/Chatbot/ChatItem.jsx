@@ -31,10 +31,11 @@ function isCodeBlock(str) {
 const ChatItem = ({ content, role }) => {
   const messageBlocks = extractCodeFromString(content);
   return role === "assistant" ? (
+    // AI message box
     <Box
       sx={{
         display: "flex",
-        p: 2,
+        p: 5,
         bgcolor: "#323f4a",
         gap: 2,
         borderRadius: 2,
@@ -71,6 +72,7 @@ const ChatItem = ({ content, role }) => {
       </Box>
     </Box>
   ) : (
+    // User message box
     <Box
       sx={{
         display: "flex",
@@ -78,6 +80,7 @@ const ChatItem = ({ content, role }) => {
         bgcolor: "#1b2329",
         gap: 2,
         borderRadius: 2,
+        marginTop: 3,
       }}
     >
       <Avatar sx={{ ml: "0", bgcolor: "black" }}>
