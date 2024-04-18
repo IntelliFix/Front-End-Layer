@@ -1,18 +1,22 @@
 import TextField from '@mui/material/TextField';
-import './Options.css';
+// import './Options.css';
+import './CodeFixer.css';
 import ButtonBar from '../Button/Button_Bar';
-import { colors } from '@mui/material';
-import { Button } from 'bootstrap';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ApiHandler from '../../ApiHandler/ApiHandler';
-import codeeditor from '../Editor/Editor';
 import Editor from "@monaco-editor/react";
 
 
 const textFieldStyle = {
-  margin: '8px',
-  width: '400px',
+  marginTop: '10px',
+  width: 'auto',
+};
+
+const OutputFieldStyle = {
+  margin: '10px',
+  width: 'auto',
+  height: 'auto',
 };
 
 
@@ -21,8 +25,6 @@ function MainView() {
   const [comment, setComment] = useState('');
   const [codeResult, setCodeResult] = useState('');
   const [commentResult, setCommentResult] = useState('');
-
-
 
   const handleButtonClick = async () => {
     try {
@@ -39,16 +41,8 @@ function MainView() {
     }
   }
 
-
-
-
   return (
     <div className="main-container">
-      <div className='views'>
-        <button>Buggy</button>
-        <button>Side-by-Side</button>
-        <button>Corrected</button>
-      </div>
       <div>
         <ButtonBar />
       </div>
@@ -82,14 +76,15 @@ function MainView() {
           /> */}
 
           <Editor
-            height="280px"
+            height="500px"
             language="python"
             theme="vs-dark"
             value={code}
-            // onChange={(e) => setCode(e.target.value)}
+            onValueChange={(code) => setCode(code.target.value)}
             options={{
               inlineSuggest: true,
-              fontSize: "16px",
+              fontSize: "14px",
+              marginBottom: "8px",
               formatOnType: true,
               autoClosingBrackets: true,
               // fi error hena 
@@ -98,18 +93,12 @@ function MainView() {
           />
 
           <TextField
-            className='textfields'
+            className='input-area-2'
             id="input-area-2"
             label="Additional Info"
             multiline
-            rows={4}
-            variant='filled'
-            margin='10px'
-            PaperProps={{
-              style: {
-                margin: '10px'
-              }
-            }}
+            rows={2}
+            variant='outlined'
             InputLabelProps={{
               style: {
                 color: 'white',
@@ -118,8 +107,9 @@ function MainView() {
             InputProps={{
               style: {
                 color: 'white',
-                border: '1px solid white',
-                backgroundColor: '#393E46',
+                // border: '1px solid white',
+                backgroundColor: '#1e1e1e',
+
               },
             }}
             style={textFieldStyle}
@@ -128,21 +118,23 @@ function MainView() {
             placeholder="Enter code JSON"
 
           />
+
+          <button className='submit-button' onClick={handleButtonClick}>Submit</button>
+
         </div>
 
         <div className='outputs'>
           <TextField
-            focused
-            color='secondary'
             className='textfields'
             id="output-area-1"
-            label="Output Code"
+            label="Output"
             multiline
-            rows={10}
+            rows={24}
             InputProps={{
               readOnly: true,
               style: {
-                color: 'white'
+                color: 'white',
+                backgroundColor: '#1e1e1e',
                 // border: '1px solid white',
               },
             }}
@@ -151,41 +143,12 @@ function MainView() {
                 color: 'white'
               },
             }}
-            style={textFieldStyle}
+            style={OutputFieldStyle}
             value={codeResult}
-
-          />
-          <TextField
-            className='textfields'
-            id="output-area-2"
-            label="Output Comments"
-            multiline
-            rows={4}
-            variant='filled'
-            // Styling
-            InputLabelProps={{
-              style: {
-                color: 'white',
-              },
-            }}
-            InputProps={{
-              readOnly: true,
-              style: {
-                color: 'white',
-                border: '1px solid white',
-                backgroundColor: '#393E46',
-              },
-            }}
-            style={textFieldStyle}
-            value={commentResult}
           />
         </div>
 
       </div>
-      <button className='submit-button' onClick={
-        handleButtonClick
-      }>Submit</button>
-
 
     </div>
   );

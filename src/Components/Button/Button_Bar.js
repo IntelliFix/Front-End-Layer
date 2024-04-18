@@ -10,26 +10,32 @@ const ButtonBar = () => {
 
   return (
     <div className='button-container'>
-        <div className="button-bar">
-      <button
-        className={selectedButton === 'Buggy' ? 'selected' : ''}
-        onClick={() => handleButtonClick('Buggy')}
-      >
-        Buggy
-      </button>
-      <button
-        className={selectedButton === 'Side-by-Side' ? 'selected' : ''}
-        onClick={() => handleButtonClick('Side-by-Side')}
-      >
-        Side-by-Side
-      </button>
-      <button
-        className={selectedButton === 'Corrected' ? 'selected' : ''}
-        onClick={() => handleButtonClick('Corrected')}
-      >
-        Corrected
-      </button>
-    </div>
+      {/* <div className='views'>
+        <button>Buggy</button>
+        <button>Side-by-Side</button>
+        <button>Corrected</button>
+      </div>  */}
+
+      <div className="button-bar">
+        <button
+          className={selectedButton === 'Buggy' ? 'selected' : ''}
+          onClick={() => handleButtonClick('Buggy')}
+        >
+          Buggy
+        </button>
+        <button
+          className={selectedButton === 'Side-by-Side' ? 'selected' : ''}
+          onClick={() => handleButtonClick('Side-by-Side')}
+        >
+          Side-by-Side
+        </button>
+        <button
+          className={selectedButton === 'Corrected' ? 'selected' : ''}
+          onClick={() => handleButtonClick('Corrected')}
+        >
+          Corrected
+        </button>
+      </div>
     </div>
   );
 };

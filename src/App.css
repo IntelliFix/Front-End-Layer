@@ -1,7 +1,12 @@
 /* @import "MyColors.json"; */
 
-body{
-  background-color: #101415;
+body {
+  /* background-color: #101415; */
+  background-color: #252a30;
+  opacity: 1;
+  /* background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px), radial-gradient(#ffffff 1.5px, #000000 1.5px); */
+  background-size: 60px 60px;
+  /* background-position: 0 0, 30px 30px; */
 }
 
 .body {
@@ -11,14 +16,14 @@ body{
   align-items: center;
 }
 
-.buttons{
-  margin:10px;
+.buttons {
+  margin: 10px;
 }
-.title{
+.title {
   color: whitesmoke;
 }
 
-.h1{
+.h1 {
   color: whitesmoke;
 }
 

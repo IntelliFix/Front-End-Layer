@@ -1,0 +1,40 @@
+.codefixer-area {
+  margin: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+  /* height: 100%; */
+}
+
+.inputs {
+  padding: 8px;
+  border-radius: 10px;
+  /* background-color: antiquewhite; */
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+/* .input-area-2 {
+  margin: 10px;
+  height: 100px;
+  background-color: blanchedalmond;
+} */
+
+.outputs {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: auto;
+}
+
+.submit-button {
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #1e1e1e;
+  color: blanchedalmond;
+  font-size: large;
+  display: inline-block; /* Set display to inline-block */
+  width: fit-content; /* Set width to auto to fit the content */
+}
