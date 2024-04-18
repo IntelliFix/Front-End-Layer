@@ -43,3 +43,39 @@
   display: flex;
   flex-direction: column;
 }
+
+.inputs {
+  padding: 8px;
+  border-radius: 10px;
+  /* background-color: antiquewhite; */
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+
+  transition: transform 0.5s ease;
+}
+
+.outputs {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: auto;
+
+  transition: transform 0.5s ease;
+}
+
+.inputs.hide {
+  transform: translateX(-100%);
+}
+
+.outputs.hide {
+  transform: translateX(100%);
+}
+
+.inputs.show {
+  transform: translateX(0%);
+}
+
+.outputs.show {
+  transform: translateX(0%);
+}

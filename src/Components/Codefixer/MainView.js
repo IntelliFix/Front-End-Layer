@@ -1,6 +1,6 @@
 import TextField from '@mui/material/TextField';
-// import './Options.css';
-import './CodeFixer.css';
+import './Options.css';
+import './MainView.css';
 import ButtonBar from '../Button/Button_Bar';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -26,9 +26,13 @@ function MainView() {
   const [codeResult, setCodeResult] = useState('');
   const [commentResult, setCommentResult] = useState('');
 
+  const [mode, setMode] = useState('Side-by-Side'); // Default mode
+  const handleModeChange = (buttonName) => {
+    setMode(buttonName);
+  };
+
   const handleButtonClick = async () => {
     try {
-
       const response = await ApiHandler.submitCode(code, comment);
       console.log(response);
       setCodeResult(response['data']['corrected_code']); // Assuming the response contains the result
@@ -41,40 +45,15 @@ function MainView() {
     }
   }
 
+
   return (
     <div className="main-container">
       <div>
-        <ButtonBar />
+        <ButtonBar handleModeChange={handleModeChange} />
       </div>
 
       <div className='codefixer-area'>
-        <div className='inputs'>
-          {/* <TextField
-            focused
-            color='secondary'
-            className='textfields'
-            id="input-area-1"
-            label="Input Code"
-            multiline
-            rows={10}
-            InputProps={{
-              style: {
-                color: 'white',
-                // border: '1px solid white',
-              },
-            }}
-            InputLabelProps={{
-              style: {
-                color: 'white',
-              },
-            }}
-            style={textFieldStyle}
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-            placeholder="Enter code JSON"
-
-          /> */}
-
+      <div className={`inputs ${mode !== 'Corrected' ? 'show' : 'hide'}`}>
           <Editor
             height="500px"
             language="python"
@@ -123,7 +102,7 @@ function MainView() {
 
         </div>
 
-        <div className='outputs'>
+        <div className={`outputs ${mode !== 'Buggy' ? 'show' : 'hide'}`}>
           <TextField
             className='textfields'
             id="output-area-1"
