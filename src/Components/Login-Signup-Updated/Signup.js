@@ -1,7 +1,8 @@
-// Signup.js
 import React, { useState } from 'react';
 import ApiHandler from '../../ApiHandler/ApiHandler';
-import { PasswordStrength } from './PasswordStrength'; // Corrected typo in component import
+import { PasswordStrength } from './PasswordStrength';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = ({ flipSignUp }) => {
   const [signUpName, setSignUpName] = useState('');
@@ -15,54 +16,117 @@ const Signup = ({ flipSignUp }) => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    clearErrors(); // Clear previous errors before signing up
+
+    if (!signUpName) {
+      setSignUpNameError('Please enter your name');
+    }
+    if (!signUpEmail) {
+      setSignUpEmailError('Please enter your email');
+    }
+    if (!signUpPhoneNo) {
+      setSignUpPhoneNoError('Please enter your phone number');
+    }
+    if (!signUpPassword) {
+      setSignUpPasswordError('Please enter a password');
+    }
+
+    if (signUpName && signUpEmail && signUpPhoneNo && signUpPassword) {
+      try {
+        const response = await ApiHandler.signup(
+          signUpEmail,
+          signUpPassword,
+          signUpName,
+          signUpPhoneNo,
+          setSignUpEmailError,
+          setSignUpPasswordError,
+          setSignUpNameError,
+          setSignUpPhoneNoError
+        );
+        const data = response.data;
+
+        if (data.errors) {
+          displayErrors(data.errors); // Display errors from the server response
+        } else if (data.user) {
+          await ApiHandler.signup(signUpEmail, signUpPassword, signUpName, signUpPhoneNo,
+            setSignUpEmailError, setSignUpPasswordError, setSignUpNameError, setSignUpPhoneNoError);
+          handleSuccessfulSignUp(data.user); // Handle successful sign-up
+        }
+      } catch (err) {
+        console.log(err);
+        toast.error('An error occurred. Please try again later.');
+      }
+    } else {
+      toast.error('Complete the missing data.');
+    }
+  };
+
+  const clearErrors = () => {
     setSignUpNameError('');
     setSignUpEmailError('');
     setSignUpPasswordError('');
     setSignUpPhoneNoError('');
-    console.log('signup');
-    await ApiHandler.signup(signUpEmail, signUpPassword, signUpName, signUpPhoneNo, 
-      setSignUpEmailError, setSignUpPasswordError, setSignUpNameError, setSignUpPhoneNoError);
+  };
+
+  const displayErrors = (errors) => {
+    if (errors.email) setSignUpEmailError(errors.email);
+    if (errors.password) setSignUpPasswordError(errors.password);
+    if (errors.name) setSignUpNameError(errors.name);
+    if (errors.phoneNumber) setSignUpPhoneNoError(errors.phoneNumber);
+    toast.error('Failed to sign up. Please check your information.');
+  };
+
+  const handleSuccessfulSignUp = (token) => {
+    toast.success('Sign up successful!');
+    localStorage.setItem('token', token);
+    window.location.assign('/homepage'); // Redirect to homepage
   };
 
   return (
     <div className="card-front">
       <div className="right-half">
         <form>
-          <input
-            type="text"
-            placeholder="Name"
-            value={signUpName}
-            onChange={(e) => setSignUpName(e.target.value)}
-            required
-          />
-          <div className="name error">{signUpNameError}</div>
-          <input
-            type="text"
-            placeholder="Phone Number"
-            value={signUpPhoneNo}
-            onChange={(e) => setSignUpPhoneNo(e.target.value)}
-            required
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={signUpEmail}
-            onChange={(e) => setSignUpEmail(e.target.value)}
-            required
-          />
-          <div className="email error">{signUpEmailError}</div>
-          {/* <input
-            type="password"
-            placeholder="Password"
-            value={signUpPassword}
-            onChange={(e) => setSignUpPassword(e.target.value)}
-            required
-          />
-          <div className="password error">{signUpPasswordError}</div> */}
-          <PasswordStrength
-            placeholder="Password"
-            onChange={(value) => setSignUpPassword(value)} // Update the password state
-          />
+          <>
+            <input
+              type="text"
+              placeholder="Name"
+              value={signUpName}
+              onChange={(e) => setSignUpName(e.target.value)}
+              required
+            />
+            <div className="name error">{signUpNameError}</div>
+          </>
+
+          <>
+            <input
+              type="text"
+              placeholder="Phone Number"
+              value={signUpPhoneNo}
+              onChange={(e) => setSignUpPhoneNo(e.target.value)}
+              required
+            />
+            <div className="phoneNo error">{signUpPhoneNoError}</div>
+          </>
+
+          <>
+            <input
+              type="email"
+              placeholder="Email"
+              value={signUpEmail}
+              onChange={(e) => setSignUpEmail(e.target.value)}
+              required
+            />
+            <div className="email error">{signUpEmailError}</div>
+          </>
+
+          <>
+            <PasswordStrength
+              placeholder="Password"
+              onChange={(value) => setSignUpPassword(value)}
+            />
+            <div className="password error">{signUpPasswordError}</div>
+          </>
+          
           <button type="button" onClick={handleSignUp}>Sign Up</button>
           <button type="button" onClick={flipSignUp}>Already Have Account?</button>
         </form>
