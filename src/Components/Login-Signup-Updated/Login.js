@@ -12,6 +12,12 @@ const Login = ({ flipSignUp }) => {
     e.preventDefault();
     setLogInEmailError('');
     setLogInPasswordError('');
+    if(!logInEmail) {
+      setLogInEmailError('Email is required');
+    }
+    if(!logInPassword) {
+      setLogInPasswordError('Password is required');
+    }
     console.log('login');
     await ApiHandler.login(logInEmail, logInPassword,setLogInEmailError, setLogInPasswordError);
   };
