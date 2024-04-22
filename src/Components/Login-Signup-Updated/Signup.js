@@ -53,7 +53,7 @@ const Signup = ({ flipSignUp }) => {
           handleSuccessfulSignUp(data.user); // Handle successful sign-up
         }
       } catch (err) {
-        console.log(err);
+        console.log("Sign up error -> ",err);
         toast.error('An error occurred. Please try again later.');
       }
     } else {
