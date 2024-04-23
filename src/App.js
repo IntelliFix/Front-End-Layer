@@ -7,6 +7,9 @@ import Navbar from './Components/MainNavbar/MainNavbar.js';
 import Home from './Components/Home/Home.js';
 import Authentication from './Components/Login-Signup-Updated/authentication.js';
 import TitleComponent from './Components/Spline/title.js';
+import Chat from './Components/Chatbot/ChatPage.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -17,8 +20,10 @@ function App() {
         <Route path="/Home" element={<Home />} />
         <Route path="/Authentication" element={<Authentication />} />
         <Route path="/Chatbot" element={<Chatbot />} />
+        <Route path="/Test-Chatbot" element={<Chat />} />
         <Route path="/Codefixer" element={<Codefixer />} />
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

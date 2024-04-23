@@ -1,4 +1,16 @@
+/* sign in and sign up styles */
 
+.error {
+  color: red;
+  font-size: 12px;
+  text-align: center;
+  margin-top: -15px;
+  margin-bottom: 10px;
+  }
+
+
+
+/* Card flip */
 body{
   color: #fff;
   font-size: large;

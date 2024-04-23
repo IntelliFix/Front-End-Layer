@@ -1,4 +1,4 @@
-import './CodeFixer.css';
+import './MainView.css';
 import MainView from './MainView.js';
 import Navbar from '../MainNavbar/MainNavbar.js';
 
