@@ -23,7 +23,7 @@ const Login = ({ flipSignUp }) => {
         <h2  >Welcome Back!</h2>
         <p>Please login to access your account.</p>
       </div>
-      <div className="right-half">
+      <div className="right-half ">
         <form>
           <input
             type="email"

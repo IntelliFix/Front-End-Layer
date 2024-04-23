@@ -18,13 +18,13 @@ const Authentication = () => {
     <div className="authentication-container">
       <div className="card-container">
         {/* Login Card */}
-        <div className={`card login-card ${isLoginFlipped ? 'is-flipped' : ''}`}>
+        <div className={`card login-card text ${isLoginFlipped ? 'is-flipped' : ''}`}>
           <Login flipSignUp={flipSignUp} />
           {/* Add your back to login button here */}
         </div>
 
         {/* Signup Card */}
-        <div className={`card signup-card ${begin ? '' : isBehind ? 'is-behind' : 'is-front'}`}>
+        <div className={`card signup-card text gradient-text ${begin ? '' : isBehind ? 'is-behind' : 'is-front'}`}>
           <Signup flipSignUp={flipSignUp} />
           {/* Add your back to signup button here */}
         </div>
