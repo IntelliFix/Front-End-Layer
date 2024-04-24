@@ -13,11 +13,11 @@ class ApiHandler {
       },
         {
           headers: {
-            'Authorization':  localStorage.getItem('token')          
+            'Authorization': localStorage.getItem('token')
           }
         }
-      
-      
+
+
       );
     console.log(response);
     return response.data;
@@ -34,11 +34,11 @@ class ApiHandler {
       },
         {
           headers: {
-            'Authorization':  localStorage.getItem('token')          
+            'Authorization': localStorage.getItem('token')
           }
         }
-            );
-            console.log(localStorage.getItem('token'));
+      );
+    console.log(localStorage.getItem('token'));
     console.log(response);
     return response.data;
   }
@@ -65,7 +65,7 @@ class ApiHandler {
         console.log(data.user);
 
         localStorage.setItem('token', data.token);
-        console.log('token: ',localStorage.getItem('token'));
+        console.log('token: ', localStorage.getItem('token'));
         // window.location.assign('/Chatbot');
       }
     } catch (err) {
@@ -74,7 +74,7 @@ class ApiHandler {
   }
 
 
-  
+
   static async signup(email, password, name, phoneNumber, setEmailError, setPasswordError, setNameError, setPhoneNumberError) {
     try {
       const response = await axios.post(`${ApiHandler.Url}/signup`, {
@@ -85,7 +85,7 @@ class ApiHandler {
       }, {
         headers: {
           'Content-Type': 'application/json'
-          
+
         }
       });
       const data = response.data;

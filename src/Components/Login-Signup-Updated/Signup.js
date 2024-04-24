@@ -18,6 +18,8 @@ const Signup = ({ flipSignUp }) => {
     e.preventDefault();
     clearErrors(); // Clear previous errors before signing up
 
+    console.log('Sign up data:', { signUpName, signUpEmail, signUpPhoneNo, signUpPassword });
+
     if (!signUpName) {
       setSignUpNameError('Please enter your name');
     }
@@ -31,30 +33,30 @@ const Signup = ({ flipSignUp }) => {
       setSignUpPasswordError('Please enter a password');
     }
 
+    console.log('Errors:', { signUpNameError, signUpEmailError, signUpPhoneNoError, signUpPasswordError });
+
+
     if (signUpName && signUpEmail && signUpPhoneNo && signUpPassword) {
       try {
         const response = await ApiHandler.signup(
           signUpEmail,
           signUpPassword,
           signUpName,
-          signUpPhoneNo,
-          setSignUpEmailError,
-          setSignUpPasswordError,
-          setSignUpNameError,
-          setSignUpPhoneNoError
+          signUpPhoneNo
         );
-        const data = response.data;
+        const data = response.user;
 
         if (data.errors) {
           displayErrors(data.errors); // Display errors from the server response
         } else if (data.user) {
-          await ApiHandler.signup(signUpEmail, signUpPassword, signUpName, signUpPhoneNo,
-            setSignUpEmailError, setSignUpPasswordError, setSignUpNameError, setSignUpPhoneNoError);
           handleSuccessfulSignUp(data.user); // Handle successful sign-up
         }
       } catch (err) {
         console.log("Sign up error -> ",err);
         toast.error('An error occurred. Please try again later.');
+        //TODO (Backend)
+        // We need to add a condition to check if the user is already signed up with the entered email 
+        // and send a different error message
       }
     } else {
       toast.error('Complete the missing data.');
@@ -79,7 +81,14 @@ const Signup = ({ flipSignUp }) => {
   const handleSuccessfulSignUp = (token) => {
     toast.success('Sign up successful!');
     localStorage.setItem('token', token);
-    window.location.assign('/homepage'); // Redirect to homepage
+    // Reset form fields and errors after successful sign-up
+    setSignUpName('');
+    setSignUpEmail('');
+    setSignUpPassword('');
+    setSignUpPhoneNo('');
+    clearErrors();
+    // Redirect using React Router if available
+    // history.push('/homepage');
   };
 
   return (
