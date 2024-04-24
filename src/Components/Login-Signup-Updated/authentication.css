@@ -11,12 +11,25 @@
 
 
 /* Card flip */
+body{
+  color: #fff;
+  font-size: large;
+}
+
+p{
+  font-size: larger;
+  font-weight: bold;
+
+}
 .authentication-container {
+  
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width:100%
+    width:100%;
+    background-image: url('../../Assets/img/banner-bg.png');
+
 
   }
   
@@ -27,6 +40,7 @@
     perspective: 1000px;
     margin: auto;
     
+    
   }
   
   .card {
@@ -36,6 +50,7 @@
     transition: transform 0.8s;
     border: 2px solid transparent; /* Add transparent border */
     box-sizing: border-box;
+
     
   }
   
@@ -48,7 +63,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff; /* Add background color */
     border: 3px solid #333; /* Add border color */
     box-sizing: border-box;
     border-radius: 20px;
@@ -57,7 +71,9 @@
   
   
   .right-half {
-    
+    background-color: #101414;
+    border-radius: 20px;
+    height: 100%;
     flex: 1;
   }
   .left-half{
@@ -65,7 +81,9 @@
  padding-left: 2%;
   }
   
+  
   .right-half form {
+    padding-top: 20%;
     display: flex;
     flex-direction: column;
     
