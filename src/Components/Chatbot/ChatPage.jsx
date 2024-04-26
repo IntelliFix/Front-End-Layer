@@ -6,6 +6,7 @@ import red from "@mui/material/colors/red";
 import ApiHandler from "../../ApiHandler/ApiHandler";
 import ChatItem from "./ChatItem";
 import ReactLoading from "react-loading";
+import Navbar from "../Navbars/MainNavbar";
 
 const Chat = () => {
   const inputRef = useRef(null);
@@ -40,6 +41,7 @@ const Chat = () => {
 
   return (
     <>
+    <Navbar />
       <Box
         sx={{
           display: "flex",

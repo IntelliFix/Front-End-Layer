@@ -1,6 +1,6 @@
 import './MainView.css';
 import MainView from './MainView.js';
-import Navbar from '../MainNavbar/MainNavbar.js';
+import Navbar from '../Navbars/MainNavbar.js';
 
 
 function Codefixer() {

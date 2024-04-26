@@ -66,7 +66,7 @@ class ApiHandler {
 
         localStorage.setItem('token', data.token);
         console.log('token: ', localStorage.getItem('token'));
-        // window.location.assign('/Chatbot');
+        window.location.assign('/Homepage');
       }
     } catch (err) {
       console.log(err);
@@ -100,7 +100,7 @@ class ApiHandler {
       if (data.user) {
         console.log(data.user);
         localStorage.setItem('token', data.user);
-        window.location.assign('/Chatbot');
+        window.location.assign('/Authentication'); // which page to take the user to after signing up
       }
 
     } catch (err) {

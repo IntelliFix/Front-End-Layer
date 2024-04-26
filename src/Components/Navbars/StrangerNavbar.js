@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./MainNavbar.css";
+import "./Navbars.css";
 import SwipeableTemporaryDrawer from "./Drawer";
 import { Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const StrangerNavbar = () => {
   const [isActive, setIsActive] = useState(false);
 
   const toggleNav = () => {
@@ -23,18 +23,9 @@ const Navbar = () => {
         <NavLink className="pages" to="/Authentication">
           Login/Signup
         </NavLink>
-        <NavLink className="pages" to="/Chatbot">
-          Chatbot v1
-        </NavLink>
-        <NavLink className="pages" to="/Test-Chatbot">
-          Chatbot v2
-        </NavLink>
-        <NavLink className="pages" to="/Codefixer">
-          Code Fixer
-        </NavLink>
       </div>
     </div>
   );
 };
 
-export default Navbar;
+export default StrangerNavbar;
