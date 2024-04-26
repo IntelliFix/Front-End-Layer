@@ -7,7 +7,7 @@ import StrangerNavbar from '../Navbars/StrangerNavbar.js';
 
 function Home() {
     return (
-        <div className='home'>
+        <div className='main'>
             <StrangerNavbar />
             <TitleComponent />
         </div>

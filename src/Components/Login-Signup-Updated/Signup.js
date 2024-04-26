@@ -53,7 +53,7 @@ const Signup = ({ flipSignUp }) => {
         }
       } catch (err) {
         console.log("Sign up error -> ", err);
-        toast.error('An error occurred. Please try again later.');
+        // toast.error('An error occurred. Please try again later.');
         //TODO (Backend)
         // We need to add a condition to check if the user is already signed up with the entered email 
         // and send a different error message

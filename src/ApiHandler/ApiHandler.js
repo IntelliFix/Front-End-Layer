@@ -1,4 +1,6 @@
 import axios from "axios"
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class ApiHandler {
   static Url = 'https://integration-layer-pb5xmvfa7a-uc.a.run.app'
@@ -100,6 +102,7 @@ class ApiHandler {
       if (data.user) {
         console.log(data.user);
         localStorage.setItem('token', data.user);
+        toast.success('Sign up successful!');
         window.location.assign('/Authentication'); // which page to take the user to after signing up
       }
 
