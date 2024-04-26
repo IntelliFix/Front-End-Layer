@@ -36,12 +36,13 @@ function MainView() {
       const response = await ApiHandler.submitCode(code, comment);
       console.log(response);
       setCodeResult(response['data']['corrected_code']); // Assuming the response contains the result
+      // setCodeResult("print(\"Hello, World!\")\ \n if 5 < 10: print(\"5 is less than 10\")");
       setCommentResult(response['data']['comment']); // Assuming the response contains the result
       console.log('result')
       console.log(codeResult);
       console.log(commentResult);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 
@@ -103,7 +104,25 @@ function MainView() {
         </div>
 
         <div className={`outputs ${mode !== 'Buggy' ? 'show' : 'hide'}`}>
-          <TextField
+        <Editor
+        className='textfields'
+            height="500px"
+            language="python"
+            theme="vs-dark"
+            value={codeResult}
+            onValueChange={(code) => setCode(code.target.value)}
+            
+            options={{
+              inlineSuggest: true,
+              fontSize: "14px",
+              marginBottom: "8px",
+              formatOnType: true,
+              autoClosingBrackets: true,
+              // fi error hena 
+              minimap: { scale: 10 }
+            }}
+          />
+          {/* <TextField
             className='textfields'
             id="output-area-1"
             label="Output"
@@ -124,7 +143,7 @@ function MainView() {
             }}
             style={OutputFieldStyle}
             value={codeResult}
-          />
+          /> */}
         </div>
 
       </div>

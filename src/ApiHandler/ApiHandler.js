@@ -18,12 +18,9 @@ class ApiHandler {
             'Authorization': localStorage.getItem('token')
           }
         }
-
-
       );
     console.log(response);
     return response.data;
-
   }
 
   static async submitMessage(message) {
@@ -67,8 +64,8 @@ class ApiHandler {
         console.log(data.user);
 
         localStorage.setItem('token', data.token);
-        console.log('token: ', localStorage.getItem('token'));
         window.location.assign('/Homepage');
+        console.log('token: ', localStorage.getItem('token'));        
       }
     } catch (err) {
       console.log(err);

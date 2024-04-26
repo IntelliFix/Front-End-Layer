@@ -14,6 +14,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Homepage() {
+  console.log('token: ', localStorage.getItem('token'));
 
   return (
     <div className='main'>
