@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ApiHandler from '../../ApiHandler/ApiHandler';
 import Editor from "@monaco-editor/react";
+import Navbar from '../Navbars/MainNavbar';
 
 
 const textFieldStyle = {
@@ -49,6 +50,7 @@ function MainView() {
 
   return (
     <div className="main-container">
+      <Navbar />
       <div>
         <ButtonBar handleModeChange={handleModeChange} />
       </div>
