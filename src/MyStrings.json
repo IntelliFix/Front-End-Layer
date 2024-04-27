@@ -1,9 +1,9 @@
 {
-  "chat": "Let's chat",
-    "ask_button": "Ask",
-    "output_area": "Output area",
-    "output_comments": "Output Comments",
-    "corrected": "Corrected",
-    "additional_info": "Additional Info",
-  "submit": "Submit"
-  }
+    "chat": "Let's chat",
+      "ask_button": "Ask",
+      "output_area": "Output area",
+      "output_comments": "Output Comments",
+      "corrected": "Corrected",
+      "additional_info": "Additional Info",
+    "submit": "Submit"
+    }

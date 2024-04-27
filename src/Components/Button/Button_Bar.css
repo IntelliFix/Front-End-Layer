@@ -1,52 +1,52 @@
 .views {
-  margin: 10px;
-  /* background-color: #ededed; */
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-  border-radius: 15px;
-}
-
-.views button {
-  font-size: large;
-  margin: 5px;
-  border-radius: 10px;
-  /* background-color: #ededed; */
-}
-
-/* --------------------------------- */
-.button-container {
-  display: flex;
-  justify-content: center;
-}
-
-.button-bar {
-  width: auto;
-
-  margin: 10px;
-  background-color: #1a1d22;
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-  border-radius: 15px;
-}
-
-.button-bar button {
-  width: auto;
-  /* flex: 1; */
-  border: none;
-  outline: none;
-  /* background-color: #ffffff; */
-  cursor: pointer;
-  font-size: large;
-  /* padding: 10px; */
-
-  margin: 5px;
-  border-radius: 10px;
-  /* background-color: #ededed; */
-}
-
-.button-bar button.selected {
-  color: #1bdbd9;
-  background-color: #000000; /* Change to whatever color you want for the highlighted button */
-}
+    margin: 10px;
+    background-color: #ededed;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    border-radius: 15px;
+  }
+  
+  .views button {
+    font-size: large;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #ededed;
+  }
+  
+  /* --------------------------------- */
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .button-bar {
+    width: auto;
+  
+    margin: 10px;
+    background-color: #ededed;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    border-radius: 15px;
+  }
+  
+  .button-bar button {
+    width: auto;
+    /* flex: 1; */
+    border: none;
+    outline: none;
+    /* background-color: #ffffff; */
+    cursor: pointer;
+    font-size: large;
+    /* padding: 10px; */
+  
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #ededed;
+  }
+  
+  .button-bar button.selected {
+    color: honeydew;
+    background-color: #1e1e1e; /* Change to whatever color you want for the highlighted button */
+  }

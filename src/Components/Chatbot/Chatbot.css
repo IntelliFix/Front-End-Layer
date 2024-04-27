@@ -1,5 +1,10 @@
 /* ChatArea.css */
 
+.body.padded-bottom {
+  padding-bottom: 300px;
+}
+
+
 .chat-container {
   background-color: #393e46;
   /* margin: 20px; */
@@ -9,6 +14,8 @@
 }
 
 .chatbot {
+      padding: 260px 0 100px 0;
+
   background-color: none;
   width: 500px;
 }

@@ -1,34 +1,28 @@
-import React from 'react';
+import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { NavBar } from "./components/NavBar/NavBar.js";
+import { Landing } from './components/Landing/Landing.js';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import BrowserRouter
+import {Chat} from './components/Chatbot/ChatPage.jsx'
+import { Authentication } from './components/Authentication/Authentication.js';
 
-import { Routes, Route } from 'react-router-dom';
-import Home from './Components/Home/Home.js';
-import Homepage from './Friend.js';
-import Authentication from './Components/Login-Signup-Updated/authentication.js';
-import Chatbot from './Components/Chatbot/Chatbot.js';
-import Chat from './Components/Chatbot/ChatPage.jsx';
-import Codefixer from './Components/Codefixer/CodeFixer-page.js';
-
-import StrangerNavbar from './Components/Navbars/StrangerNavbar.js';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-
+import React from 'react';
+import Codefixer from './components/Codefixer/Codefixer';
 function App() {
   return (
-    <div className='main'>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Authentication" element={<Authentication />} />
-        <Route path="/Chatbot" element={<Chatbot />} />
-        <Route path="/Test-Chatbot" element={<Chat />} />
-        <Route path="/Codefixer" element={<Codefixer />} />
-        <Route path="/Homepage" element={<Homepage />} />
-      </Routes>
-      <ToastContainer />
-    </div>
+    <Router> {/* Wrap the entire component tree with Router */}
+      <div className="App">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Landing />} /> {/* Use element prop instead of component */}
+          <Route path='/Chatbot' element={<Chat/>}/>
+          <Route path='/Authentication' element={<Authentication/>}/>
+          <Route path='/Codefixer' element={<Codefixer/>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
 export default App;
-

@@ -2,18 +2,17 @@ import React from 'react';
 import '../../App.css';
 import Chatbot_Field from './Chatbot_TextField';
 import Strings from '../../MyStrings.json';
-import Navbar from '../Navbars/MainNavbar';
+import { Padding } from '@mui/icons-material';
 
-function Chatbot() {
+export const Chatbot=() =>{
   return (
-    <div className='body'>
-      <Navbar />
-      <h1 className='title'>{Strings.chat}</h1>
-      <div className="chat-container">
+    <div className='body padded-bottom' >
+      <h1 className='title' style={{paddingTop:'150px' }}>{Strings.chat}</h1>
+      <div className="chat-container" >
+        
         <Chatbot_Field />
       </div>
     </div>
   );
 }
 
-export default Chatbot;

@@ -1,81 +1,81 @@
 .main-container{
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-}
-
-.views{
-  margin: 10px;
-  background-color: #1bdbd9;
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-  border-radius: 15px;
-}
-
-.views button {
-  font-size: large;
-  margin: 5px;
-  border-radius: 10px;
-  background-color: #1a1d22;
-}
-
-/* ------- */
-
-.codefixer-area{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.inputs{
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.textfields {
-  margin: 20px;
-}
-
-.outputs{
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.inputs {
-  padding: 8px;
-  border-radius: 10px;
-  /* background-color: antiquewhite; */
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-
-  transition: transform 0.5s ease;
-}
-
-.outputs {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  height: auto;
-
-  transition: transform 0.5s ease;
-}
-
-.inputs.hide {
-  transform: translateX(-100%);
-}
-
-.outputs.hide {
-  transform: translateX(100%);
-}
-
-.inputs.show {
-  transform: translateX(0%);
-}
-
-.outputs.show {
-  transform: translateX(0%);
-}
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+  }
+  
+  .views{
+    margin: 10px;
+    background-color: #3F3F3F;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    border-radius: 15px;
+  }
+  
+  .views button {
+    font-size: large;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #EDEDED;
+  }
+  
+  /* ------- */
+  
+  .codefixer-area{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .inputs{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .textfields {
+    margin: 20px;
+  }
+  
+  .outputs{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .inputs {
+    padding: 8px;
+    border-radius: 10px;
+    /* background-color: antiquewhite; */
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+  
+    transition: transform 0.5s ease;
+  }
+  
+  .outputs {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: auto;
+  
+    transition: transform 0.5s ease;
+  }
+  
+  .inputs.hide {
+    transform: translateX(-100%);
+  }
+  
+  .outputs.hide {
+    transform: translateX(100%);
+  }
+  
+  .inputs.show {
+    transform: translateX(0%);
+  }
+  
+  .outputs.show {
+    transform: translateX(0%);
+  }

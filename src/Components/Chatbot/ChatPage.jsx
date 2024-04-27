@@ -6,9 +6,8 @@ import red from "@mui/material/colors/red";
 import ApiHandler from "../../ApiHandler/ApiHandler";
 import ChatItem from "./ChatItem";
 import ReactLoading from "react-loading";
-import Navbar from "../Navbars/MainNavbar";
 
-const Chat = () => {
+export const Chat = () => {
   const inputRef = useRef(null);
   const [inputText, setInputText] = useState("");
   const [messages, setMessages] = useState([]);
@@ -40,8 +39,8 @@ const Chat = () => {
   };
 
   return (
+    
     <>
-    <Navbar />
       <Box
         sx={{
           display: "flex",
@@ -55,6 +54,7 @@ const Chat = () => {
         {/* Sidebar */}
         <Box
           sx={{
+            paddingTop:10,
             marginTop: "auto",
             marginBottom: "auto",
             display: { md: "flex", xs: "none", sm: "none" },
@@ -65,6 +65,7 @@ const Chat = () => {
           {" "}
           <Box
             sx={{
+              
               boxShadow: "2px 2px 2px black",
               display: "flex",
               width: "100%",
@@ -128,6 +129,7 @@ const Chat = () => {
         {/* Main Chat Area */}
         <Box
           sx={{
+            paddingTop: 6,
             display: "flex",
             flex: { md: 0.8, xs: 1, sm: 1 },
             flexDirection: "column",
@@ -222,4 +224,3 @@ const Chat = () => {
   );
 };
 
-export default Chat;

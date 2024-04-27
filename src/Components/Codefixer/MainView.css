@@ -1,0 +1,23 @@
+.main-container{
+    padding-top: 3%;
+    position: relative;
+  }
+  
+  .codefixer-area {
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    /* height: 100%; */
+  }
+  
+  .submit-button {
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #1e1e1e;
+    color: blanchedalmond;
+    font-size: large;
+    display: inline-block; /* Set display to inline-block */
+    width: fit-content; /* Set width to auto to fit the content */
+  }
