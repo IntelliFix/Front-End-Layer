@@ -7,7 +7,7 @@ import Homepage from './Friend.js';
 import Authentication from './Components/Login-Signup-Updated/authentication.js';
 import Chatbot from './Components/Chatbot/Chatbot.js';
 import Chat from './Components/Chatbot/ChatPage.jsx';
-import Codefixer from './Components/Codefixer/CodeFixer.js';
+import Codefixer from './Components/Codefixer/CodeFixer-page.js';
 
 import StrangerNavbar from './Components/Navbars/StrangerNavbar.js';
 import { ToastContainer } from 'react-toastify';

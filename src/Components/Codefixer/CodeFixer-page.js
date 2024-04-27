@@ -1,5 +1,5 @@
-import './MainView.css';
-import MainView from './MainView.js';
+import './Codefixer-views.css';
+import MainView from './Codefixer-views.js';
 import Navbar from '../Navbars/MainNavbar.js';
 
 

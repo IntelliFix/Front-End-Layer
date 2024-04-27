@@ -1,6 +1,6 @@
 .views {
   margin: 10px;
-  background-color: #ededed;
+  /* background-color: #ededed; */
   display: flex;
   flex-direction: row;
   align-self: center;
@@ -11,7 +11,7 @@
   font-size: large;
   margin: 5px;
   border-radius: 10px;
-  background-color: #ededed;
+  /* background-color: #ededed; */
 }
 
 /* --------------------------------- */
@@ -24,7 +24,7 @@
   width: auto;
 
   margin: 10px;
-  background-color: #ededed;
+  background-color: #1a1d22;
   display: flex;
   flex-direction: row;
   align-self: center;
@@ -43,10 +43,10 @@
 
   margin: 5px;
   border-radius: 10px;
-  background-color: #ededed;
+  /* background-color: #ededed; */
 }
 
 .button-bar button.selected {
-  color: honeydew;
-  background-color: #1e1e1e; /* Change to whatever color you want for the highlighted button */
+  color: #1bdbd9;
+  background-color: #000000; /* Change to whatever color you want for the highlighted button */
 }
