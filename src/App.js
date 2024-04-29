@@ -1,27 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { NavBar } from "./components/NavBar/NavBar.js";
-import { Landing } from './components/Landing/Landing.js';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import BrowserRouter
-import {Chat} from './components/Chatbot/ChatPage.jsx'
-import { Authentication } from './components/Authentication/Authentication.js';
+import logo from "./logo.svg";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { NavBar } from "./Components/NavBar/NavBar.js";
+import { Landing } from "./Components/Landing/Landing.js";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Import BrowserRouter
+import { Chat } from "./Components/Chatbot/ChatPage.jsx";
+import { Authentication } from "./Components/Authentication/Authentication.js";
 
-import React from 'react';
-import Codefixer from './components/Codefixer/Codefixer';
+import React from "react";
+import Codefixer from "./Components/Codefixer/Codefixer";
 
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
-    <Router> {/* Wrap the entire component tree with Router */}
+    <Router>
+      {" "}
+      {/* Wrap the entire component tree with Router */}
       <div className="App">
         <NavBar />
         <Routes>
-          <Route path="/" element={<Landing />} /> {/* Use element prop instead of component */}
-          <Route path='/Chatbot' element={<Chat/>}/>
-          <Route path='/Authentication' element={<Authentication/>}/>
-          <Route path='/Codefixer' element={<Codefixer/>} />
+          <Route path="/" element={<Landing />} />{" "}
+          {/* Use element prop instead of component */}
+          <Route path="/Chatbot" element={<Chat />} />
+          <Route path="/Authentication" element={<Authentication />} />
+          <Route path="/Codefixer" element={<Codefixer />} />
         </Routes>
         <ToastContainer />
       </div>
