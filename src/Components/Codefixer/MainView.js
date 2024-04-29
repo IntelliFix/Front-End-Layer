@@ -54,7 +54,7 @@ function MainView() {
       </div>
 
       <div className='codefixer-area'>
-      <div className={`inputs ${mode !== 'Corrected' ? 'show' : 'hide'}`}>
+        <div className={`inputs ${mode !== 'Corrected' ? 'show' : 'hide'}`}>
           <Editor
             height="500px"
             language="python"
@@ -67,51 +67,31 @@ function MainView() {
               marginBottom: "8px",
               formatOnType: true,
               autoClosingBrackets: true,
-              // fi error hena 
               minimap: { scale: 10 }
             }}
           />
 
-          <TextField
-            className='input-area-2'
-            id="input-area-2"
-            label="Additional Info"
-            multiline
-            rows={2}
-            variant='outlined'
-            InputLabelProps={{
-              style: {
-                color: 'white',
-              },
-            }}
-            InputProps={{
-              style: {
-                color: 'white',
-                // border: '1px solid white',
-                backgroundColor: '#1e1e1e',
-
-              },
-            }}
-            style={textFieldStyle}
-            onChange={(e) => setComment(e.target.value)}
-            value={comment}
-            placeholder="Enter code JSON"
-
-          />
-
-          <button className='submit-button' onClick={handleButtonClick}>Submit</button>
-
+          <div className="chat-input">
+            <textarea
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              // onKeyDown={handleInputChange}
+              placeholder="Type your message..."
+              rows={4} // Number of rows for multiline input
+            />
+            <button type="submit" onClick={handleButtonClick}>Send</button>
+          </div>
         </div>
 
         <div className={`outputs ${mode !== 'Buggy' ? 'show' : 'hide'}`}>
-        <Editor
-        className='textfields'
+          <Editor
+            className='textfields'
             height="500px"
             language="python"
             theme="vs-dark"
             value={codeResult}
             onValueChange={(code) => setCode(code.target.value)}
-            
+
             options={{
               inlineSuggest: true,
               fontSize: "14px",
