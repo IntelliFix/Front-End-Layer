@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ApiHandler from '../../ApiHandler/ApiHandler';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './Authentication.css';
 
 const Login = ({ flipSignUp }) => {
   const [logInEmail, setLogInEmail] = useState('');

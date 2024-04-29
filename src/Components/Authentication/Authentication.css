@@ -1,5 +1,9 @@
 /* sign in and sign up styles */
 
+button{
+  margin: 10px;
+}
+
 .error {
   color: red;
   font-size: 12px;
@@ -66,13 +70,13 @@ p{
   .card-front,
   .card-back {
     width: 100%;
-    height: 100%;
+    height: auto;
     position: absolute;
     backface-visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 3px solid #333; /* Add border color */
+    border: 3px solid #333;
     box-sizing: border-box;
     border-radius: 20px;
   
@@ -82,7 +86,7 @@ p{
   .right-half {
     background-color: #101414;
     border-radius: 20px;
-    height: 100%;
+    height: auto;
     flex: 1;
   }
   .left-half{
@@ -166,9 +170,9 @@ p{
     color: #333;
   }
   
-  .card-back button {
+  /* .card-back button {
     margin-top: 20px;
-  }
+  } */
   
   @keyframes flipToBack {
     0% {

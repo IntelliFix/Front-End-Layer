@@ -9,6 +9,9 @@ import { Authentication } from './components/Authentication/Authentication.js';
 
 import React from 'react';
 import Codefixer from './components/Codefixer/Codefixer';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <Router> {/* Wrap the entire component tree with Router */}
@@ -20,6 +23,7 @@ function App() {
           <Route path='/Authentication' element={<Authentication/>}/>
           <Route path='/Codefixer' element={<Codefixer/>} />
         </Routes>
+        <ToastContainer />
       </div>
     </Router>
   );
