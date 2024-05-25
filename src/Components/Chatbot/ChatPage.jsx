@@ -1,17 +1,19 @@
 import React, { useRef, useState } from "react";
-import { Box, Avatar, Typography, Button, IconButton } from "@mui/material";
+import { Box, Avatar, Typography, IconButton } from "@mui/material";
 import { IoMdSend } from "react-icons/io";
-import { AiOutlineLoading3Quarters } from "react-icons/ai"; // Import loading icon
-import red from "@mui/material/colors/red";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { FaPython } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import ApiHandler from "../../ApiHandler/ApiHandler";
 import ChatItem from "./ChatItem";
 import ReactLoading from "react-loading";
+import "./Chatbot.css"; // Import the CSS file
 
 export const Chat = () => {
   const inputRef = useRef(null);
   const [inputText, setInputText] = useState("");
   const [messages, setMessages] = useState([]);
-  const [isTyping, setIsTyping] = useState(false); // State variable to indicate whether the chatbot is typing
+  const [isTyping, setIsTyping] = useState(false);
 
   const handleSubmit = async () => {
     try {
@@ -21,7 +23,7 @@ export const Chat = () => {
           { content: inputText, role: "user" },
         ]);
         setInputText("");
-        setIsTyping(true); // Set isTyping to true when the user submits a message
+        setIsTyping(true);
 
         const response = await ApiHandler.submitMessage(inputText);
         const responseData = response.data.output;
@@ -30,16 +32,19 @@ export const Chat = () => {
           ...prevMessages,
           { content: responseData, role: "assistant" },
         ]);
-        setIsTyping(false); // Set isTyping to false when the response is received
+        setIsTyping(false);
       }
     } catch (error) {
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { content: "Sorry an error has occured...", role: "assistant" },
+      ]);
       console.log(error);
-      setIsTyping(false); // Set isTyping to false in case of an error
+      setIsTyping(false);
     }
   };
 
   return (
-    
     <>
       <Box
         sx={{
@@ -51,10 +56,9 @@ export const Chat = () => {
           gap: 3,
         }}
       >
-        {/* Sidebar */}
         <Box
           sx={{
-            paddingTop:10,
+            paddingTop: 10,
             marginTop: "auto",
             marginBottom: "auto",
             display: { md: "flex", xs: "none", sm: "none" },
@@ -62,17 +66,16 @@ export const Chat = () => {
             flexDirection: "column",
           }}
         >
-          {" "}
           <Box
             sx={{
-              
               boxShadow: "2px 2px 2px black",
               display: "flex",
               width: "100%",
               height: "70vh",
-              bgcolor: "#1b2329",
+              bgcolor: "#1e1e1e",
               borderRadius: 5,
               flexDirection: "column",
+              border: "1px solid #444",
               mx: 3,
             }}
           >
@@ -80,22 +83,23 @@ export const Chat = () => {
               sx={{
                 mx: "auto",
                 my: 2,
-                bgcolor: "#1bf7f3",
-                color: "black",
+                bgcolor:
+                  "linear-gradient(90.21deg,rgba(170, 54, 124, 0.5) -5.91%,rgba(74, 47, 189, 0.5) 111.58%)",
+                background:
+                  "linear-gradient(90.21deg,rgba(170, 54, 124, 0.5) -5.91%,rgba(74, 47, 189, 0.5) 111.58%)",
+                color: "white",
                 fontWeight: 700,
               }}
             >
               PY
             </Avatar>
-            <Typography
-              sx={{ mx: "auto", fontFamily: "work sans", color: "white" }}
-            >
+            <Typography sx={{ mx: "auto", color: "white" }}>
               Hello, this is PyErre!
             </Typography>
             <Typography
               sx={{
                 mx: "auto",
-                fontFamily: "work sans",
+                // fontFamily: "work sans",
                 my: 4,
                 p: 3,
                 color: "white",
@@ -106,27 +110,9 @@ export const Chat = () => {
               won't be able to help you with anything else rather than python
               because the IntelliFix team programmed me to do so :(
             </Typography>
-            <Button
-              // onClick={handleDeleteChats}
-              sx={{
-                width: "200px",
-                my: "auto",
-                color: "white",
-                fontWeight: "700",
-                borderRadius: 3,
-                mx: "auto",
-                bgcolor: red[400],
-                ":hover": {
-                  bgcolor: red[600],
-                },
-              }}
-            >
-              Clear Conversation
-            </Button>
           </Box>
         </Box>
 
-        {/* Main Chat Area */}
         <Box
           sx={{
             paddingTop: 6,
@@ -136,69 +122,34 @@ export const Chat = () => {
             px: 3,
           }}
         >
-          {/* Chat Messages */}
-          <Box
-            sx={{
-              width: "100%",
-              height: "75vh",
-              borderRadius: 3,
-              mx: "auto",
-              display: "flex",
-              flexDirection: "column",
-              overflow: "hidden", // Hide the scrollbar
-            }}
-          >
-            <Box
-              sx={{
-                overflowY: "auto", // Allow vertical scrolling
-                paddingRight: "17px", // Add padding to compensate for the scrollbar width
-              }}
-            >
+          <Box className="chat-container">
+            <Box className="chat-messages">
               {messages.map((chat, index) => (
-                <ChatItem key={index} content={chat.content} role={chat.role} />
+                <div key={index} className={`chat-message ${chat.role}`}>
+                  {chat.content}
+                  {chat.role === "user" ? (
+                    <FaUser className="icon" />
+                  ) : (
+                    <FaPython className="icon" />
+                  )}
+                </div>
               ))}
+              {isTyping && (
+                <div className="chat-message assistant">
+                  <ReactLoading
+                    type="spin"
+                    color="white"
+                    height={40}
+                    width={40}
+                  />
+                </div>
+              )}
             </Box>
-          </Box>
 
-          {/* Input Field */}
-          <div
-            style={{
-              position: "fixed",
-              // marginTop: "10rem",
-              width: "75%",
-              bottom: 3, // what this do? it holds the input down but how?
-              borderRadius: 45,
-              backgroundColor: "rgba(0, 0, 0, 0.3)",
-              // borderColor: "white",
-              border: "0.3px solid #1bf7f3",
-              marginTop: "0.7rem",
-              display: "flex",
-              // marginBottom: "3px", // not workinngg :(
-              backdropFilter: "blur(15px)",
-            }}
-          >
-            {/* Conditionally render loading icon or send button */}
-            {isTyping ? (
-              <ReactLoading
-                color="white"
-                height={50}
-                width={50}
-                margin={3}
-              />
-            ) : (
+            <Box className="chat-input">
               <input
                 ref={inputRef}
                 type="text"
-                style={{
-                  width: "100%",
-                  backgroundColor: "transparent",
-                  padding: "15px", // it was 30px
-                  border: "none",
-                  outline: "none",
-                  color: "white",
-                  fontSize: "20px",
-                  marginBottom: "0rem",
-                }}
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 onKeyDown={(e) => {
@@ -206,21 +157,15 @@ export const Chat = () => {
                     handleSubmit();
                   }
                 }}
+                placeholder="Type your message..."
               />
-            )}
-            {/* Conditionally render loading icon or send button */}
-            {!isTyping && (
-              <IconButton
-                onClick={handleSubmit}
-                sx={{ color: "#1bf7f3", mx: 1 }}
-              >
+              <IconButton onClick={handleSubmit} disabled={isTyping}>
                 <IoMdSend />
               </IconButton>
-            )}
-          </div>
+            </Box>
+          </Box>
         </Box>
       </Box>
     </>
   );
 };
-

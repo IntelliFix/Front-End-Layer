@@ -44,7 +44,7 @@ const ChatItem = ({ content, role }) => {
     >
       <Avatar sx={{ ml: "0", bgcolor: "black" }}>
         {/* <img src="openai.png" alt="openai" width={"30px"} /> */}
-        <TbBrandPython color="#17e6e6" bgcolor="black" />
+        <TbBrandPython color="rgba(170, 54, 124, 1)" bgcolor="black" />
       </Avatar>
       <Box>
         {!messageBlocks && (

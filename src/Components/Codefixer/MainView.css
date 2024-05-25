@@ -1,13 +1,44 @@
+.main-container {
+  padding-top: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 
-/* styles.css */
+.codefixer-area {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
 
+.inputs,
+.outputs {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
 
-/* Adjust the colors and styles as needed */
+.inputs .buggy-code,
+.outputs .textfields {
+  width: 100%;
+  flex: 1;
+}
 
 .chat-input {
   display: flex;
+  gap: 4px;
   align-items: center;
-  margin-top: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 40px;
+  padding: 12px;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.buggy-code {
+  border-radius: 20px;
 }
 
 textarea {
@@ -35,31 +66,3 @@ button {
 button:hover {
   background-color: #0056b3;
 }
-
-
-
-/* ------------------------------------ */
-
-.main-container{
-    padding-top: 3%;
-    position: relative;
-  }
-  
-  .codefixer-area {
-    margin: 10px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: row;
-    background-color: transparent;
-    /* height: 100%; */
-  }
-  
-  .submit-button {
-    margin: 10px;
-    border-radius: 10px;
-    background-color: #1e1e1e;
-    color: blanchedalmond;
-    font-size: large;
-    display: inline-block; /* Set display to inline-block */
-    width: fit-content; /* Set width to auto to fit the content */
-  }
