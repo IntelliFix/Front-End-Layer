@@ -6,7 +6,13 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import ApiHandler from "../../ApiHandler/ApiHandler";
 import Editor from "@monaco-editor/react";
-import { Box, Avatar, Typography, IconButton } from "@mui/material";
+import {
+  Box,
+  Avatar,
+  Typography,
+  IconButton,
+  CircularProgress,
+} from "@mui/material";
 import { IoMdSend } from "react-icons/io";
 
 const textFieldStyle = {
@@ -25,6 +31,7 @@ function MainView() {
   const [comment, setComment] = useState("");
   const [codeResult, setCodeResult] = useState("");
   const [commentResult, setCommentResult] = useState("");
+  const [loading, setLoading] = useState(false);
   const inputRef = useRef(null);
 
   const [mode, setMode] = useState("Side-by-Side"); // Default mode
@@ -34,16 +41,28 @@ function MainView() {
 
   const handleButtonClick = async () => {
     try {
-      const response = await ApiHandler.submitCode(code, comment);
+      setLoading(true);
+      console.log(code);
+      const formatCodeToJSON = (code) => {
+        return JSON.stringify({ code });
+      };
+      const formattedCode = formatCodeToJSON(code);
+      console.log("Formatted code: " + formattedCode);
+      const response = await ApiHandler.submitCode(formattedCode, comment);
       console.log(response);
-      setCodeResult(response["data"]["corrected_code"]); // Assuming the response contains the result
-      // setCodeResult("print(\"Hello, World!\")\ \n if 5 < 10: print(\"5 is less than 10\")");
+      var correctedCode = response["data"]["corrected_code"];
+      // if (correctedCode.startsWith("```python")) {
+      //   correctedCode = correctedCode.split("```");
+      // }
+      setCodeResult(correctedCode); // Assuming the response contains the result
       setCommentResult(response["data"]["comment"]); // Assuming the response contains the result
-      console.log("result");
+      console.log("Result");
       console.log(codeResult);
       console.log(commentResult);
     } catch (error) {
-      // console.log(error);
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -56,34 +75,19 @@ function MainView() {
       <div className="codefixer-area">
         <div className={`inputs ${mode !== "Corrected" ? "show" : "hide"}`}>
           <Editor
-            // className="buggy-code"
             height="430px"
-            // width="400px"
             language="python"
             theme="vs-dark"
             value={code}
-            onValueChange={(code) => setCode(code.target.value)}
+            onChange={(value) => setCode(value)}
             options={{
               inlineSuggest: true,
               fontSize: "14px",
               marginBottom: "8px",
               formatOnType: true,
               autoClosingBrackets: true,
-              // minimap: { scale: 10 },
             }}
           />
-
-          {/* <div className="chat-input"> */}
-          {/* <textarea
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              // onKeyDown={handleInputChange}
-              placeholder="Type your message..."
-              rows={4} // Number of rows for multiline input
-            />
-            <button type="submit" onClick={handleButtonClick}>
-              Send
-            </button> */}
           <Box className="chat-input">
             <input
               ref={inputRef}
@@ -101,53 +105,51 @@ function MainView() {
               <IoMdSend />
             </IconButton>
           </Box>
-          {/* </div> */}
         </div>
 
         <div className={`outputs ${mode !== "Buggy" ? "show" : "hide"}`}>
-          <Editor
-            // className="textfields"
-            height="430px"
-            language="python"
-            theme="vs-dark"
-            // width="400px"
-            value={codeResult}
-            onValueChange={(code) => setCode(code.target.value)}
-            options={{
-              inlineSuggest: true,
-              fontSize: "14px",
-              marginBottom: "8px",
-              formatOnType: true,
-              autoClosingBrackets: true,
-              // fi error hena
-              // minimap: { scale: 10 },
-            }}
-          />
-          {/* <TextField
-            className='textfields'
-            id="output-area-1"
-            label="Output"
-            multiline
-            rows={24}
-            InputProps={{
-              readOnly: true,
-              style: {
-                color: 'white',
-                backgroundColor: '#1e1e1e',
-                // border: '1px solid white',
-              },
-            }}
-            InputLabelProps={{
-              style: {
-                color: 'white'
-              },
-            }}
-            style={OutputFieldStyle}
-            value={codeResult}
-          /> */}
+          {loading ? (
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              height="100%"
+            >
+              <CircularProgress />
+            </Box>
+          ) : (
+            <Editor
+              height="430px"
+              language="python"
+              theme="vs-dark"
+              value={codeResult}
+              onChange={(value) => setCodeResult(value)}
+              options={{
+                inlineSuggest: true,
+                fontSize: "14px",
+                marginBottom: "8px",
+                formatOnType: true,
+                autoClosingBrackets: true,
+              }}
+            />
+          )}
+          <Box className="chat-input">
+            <textarea
+              ref={inputRef}
+              value={commentResult}
+              rows="4" // Adjust the number of rows as needed
+              style={{
+                width: "100%",
+                resize: "none", // Prevents resizing, can be omitted if resizing is desired
+                boxSizing: "border-box", // Ensures the padding and border are included in the element's total width and height
+              }}
+              readOnly
+            />
+          </Box>
         </div>
       </div>
     </div>
   );
 }
+
 export default MainView;

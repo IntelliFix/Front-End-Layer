@@ -30,7 +30,12 @@
   display: flex;
   gap: 4px;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(61, 59, 77, 0.3);
+  /* background: linear-gradient(
+    90.21deg,
+    rgba(39, 33, 37, 0.5) -5.91%,
+    rgba(140, 136, 154, 0.5) 111.58%
+  ); */
   border-radius: 40px;
   padding: 12px;
   width: 100%;
