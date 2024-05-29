@@ -1,30 +1,15 @@
-import TextField from "@mui/material/TextField";
 import "./Options.css";
 import "./MainView.css";
 import ButtonBar from "../Button/Button_Bar.js";
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
 import ApiHandler from "../../ApiHandler/ApiHandler";
 import Editor from "@monaco-editor/react";
 import {
   Box,
-  Avatar,
-  Typography,
   IconButton,
   CircularProgress,
 } from "@mui/material";
 import { IoMdSend } from "react-icons/io";
-
-const textFieldStyle = {
-  marginTop: "10px",
-  width: "auto",
-};
-
-const OutputFieldStyle = {
-  margin: "10px",
-  width: "auto",
-  height: "auto",
-};
 
 function MainView() {
   const [code, setCode] = useState("");

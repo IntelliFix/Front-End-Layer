@@ -1,13 +1,7 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import logo from "../../assets/img/logo.svg";
 import newLogo from "../../LOGO.png";
-import navIcon1 from "../../assets/img/nav-icon1.svg";
-import navIcon2 from "../../assets/img/nav-icon2.svg";
-import navIcon3 from "../../assets/img/nav-icon3.svg";
-import { HashLink } from "react-router-hash-link";
 import { BrowserRouter as Router, NavLink } from "react-router-dom"; // Import BrowserRouter
-import { Chatbot } from "../Chatbot/Chatbot"; // Import Chatbot component
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 

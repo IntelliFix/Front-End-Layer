@@ -2,7 +2,6 @@ import React from 'react';
 import '../../App.css';
 import Chatbot_Field from './Chatbot_TextField';
 import Strings from '../../MyStrings.json';
-import { Padding } from '@mui/icons-material';
 
 export const Chatbot=() =>{
   return (

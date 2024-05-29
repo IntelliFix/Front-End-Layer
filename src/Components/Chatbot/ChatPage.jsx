@@ -1,11 +1,9 @@
 import React, { useRef, useState } from "react";
 import { Box, Avatar, Typography, IconButton } from "@mui/material";
 import { IoMdSend } from "react-icons/io";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { FaPython } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import ApiHandler from "../../ApiHandler/ApiHandler";
-import ChatItem from "./ChatItem";
 import ReactLoading from "react-loading";
 import "./Chatbot.css"; // Import the CSS file
 
