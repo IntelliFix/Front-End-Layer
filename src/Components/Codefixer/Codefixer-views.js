@@ -69,7 +69,6 @@ function MainView() {
               marginBottom: "8px",
               formatOnType: true,
               autoClosingBrackets: true,
-              // fi error hena 
               minimap: { scale: 10 }
             }}
           />

@@ -61,13 +61,12 @@ button {
   margin-left: 10px;
   padding: 8px 16px;
   font-size: 16px;
-  background-color: #1bdbd9;
-  color: #fff;
+  color: black;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%, rgba(74, 47, 189, 0.5) 111.58%);
 }
