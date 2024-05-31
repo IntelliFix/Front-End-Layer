@@ -55,11 +55,14 @@ const Signup = ({ flipSignUp }) => {
         }
       } catch (err) {
         console.log(err);
-        toast.error('An error occurred. Please try again later.');
       }
-    } else {
-      toast.error('Complete the missing data.');
     }
+  };
+
+  const handleSuccessfulSignUp = (token) => {
+    toast.success('Sign up successful!');
+    localStorage.setItem('token', token);
+    window.location.assign('/homepage'); // Redirect to homepage
   };
 
   const clearErrors = () => {
@@ -75,12 +78,6 @@ const Signup = ({ flipSignUp }) => {
     if (errors.name) setSignUpNameError(errors.name);
     if (errors.phoneNumber) setSignUpPhoneNoError(errors.phoneNumber);
     toast.error('Failed to sign up. Please check your information.');
-  };
-
-  const handleSuccessfulSignUp = (token) => {
-    toast.success('Sign up successful!');
-    localStorage.setItem('token', token);
-    window.location.assign('/homepage'); // Redirect to homepage
   };
 
   return (
@@ -127,7 +124,7 @@ const Signup = ({ flipSignUp }) => {
             />
             <div className="password error">{signUpPasswordError}</div>
           </>
-          
+
           <button type="button" onClick={handleSignUp}>Sign Up</button>
           <button type="button" onClick={flipSignUp}>Already Have Account?</button>
         </form>
