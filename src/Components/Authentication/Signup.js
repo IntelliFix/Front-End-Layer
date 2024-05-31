@@ -31,6 +31,9 @@ const Signup = ({ flipSignUp }) => {
     if (!signUpPassword) {
       setSignUpPasswordError('Please enter a password');
     }
+    if(!signUpName || !signUpEmail || !signUpPhoneNo || !signUpPassword){
+    toast.error('Complete the missing data!');
+    }
 
     if (signUpName && signUpEmail && signUpPhoneNo && signUpPassword) {
       try {
