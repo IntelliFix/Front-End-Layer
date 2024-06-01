@@ -15,24 +15,56 @@ const Signup = ({ flipSignUp }) => {
   const [signUpPasswordError, setSignUpPasswordError] = useState('');
   const [signUpPhoneNoError, setSignUpPhoneNoError] = useState('');
 
+  const clearErrors = () => {
+    setSignUpNameError('');
+    setSignUpEmailError('');
+    setSignUpPasswordError('');
+    setSignUpPhoneNoError('');
+  };
+
+  const displayErrors = (errors) => {
+    if (errors.email) setSignUpEmailError(errors.email);
+    if (errors.password) setSignUpPasswordError(errors.password);
+    if (errors.name) setSignUpNameError(errors.name);
+    if (errors.phoneNumber) setSignUpPhoneNoError(errors.phoneNumber);
+    toast.error('Failed to sign up. Please check your information.');
+  };
+
   const handleSignUp = async (e) => {
     e.preventDefault();
     clearErrors(); // Clear previous errors before signing up
 
+    const emailPattern = /^([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+$/;
+    const namePattern = /^[a-zA-Z\s]*$/;
+
     if (!signUpName) {
       setSignUpNameError('Please enter your name');
+    } else if (!namePattern.test(signUpName)) {
+      setSignUpNameError('Name can only contain letters');
+      toast.error('Name can only contain letters');
     }
+
     if (!signUpEmail) {
       setSignUpEmailError('Please enter your email');
+    } else if (!emailPattern.test(signUpEmail)) {
+      setSignUpEmailError('Please enter a valid email');
+      toast.error('Invalid email format');
     }
+
     if (!signUpPhoneNo) {
       setSignUpPhoneNoError('Please enter your phone number');
     }
+
     if (!signUpPassword) {
       setSignUpPasswordError('Please enter a password');
+    } else if (signUpPassword.length < 8) {
+      setSignUpPasswordError('Password must be at least 8 characters');
+      toast.error('Password must be at least 8 characters');
     }
-    if(!signUpName || !signUpEmail || !signUpPhoneNo || !signUpPassword){
-    toast.error('Complete the missing data!');
+
+    if (!signUpName || !signUpEmail || !signUpPhoneNo || !signUpPassword || !emailPattern.test(signUpEmail) || !namePattern.test(signUpName) || signUpPassword.length < 8) {
+      toast.error('Complete the missing data!');
+      return;
     }
 
     if (signUpName && signUpEmail && signUpPhoneNo && signUpPassword) {
@@ -52,8 +84,6 @@ const Signup = ({ flipSignUp }) => {
         if (data.errors) {
           displayErrors(data.errors); // Display errors from the server response
         } else if (data.user) {
-          await ApiHandler.signup(signUpEmail, signUpPassword, signUpName, signUpPhoneNo,
-            setSignUpEmailError, setSignUpPasswordError, setSignUpNameError, setSignUpPhoneNoError);
           handleSuccessfulSignUp(data.user); // Handle successful sign-up
         }
       } catch (err) {
@@ -70,21 +100,6 @@ const Signup = ({ flipSignUp }) => {
     toast.success('Sign up successful!');
     localStorage.setItem('token', token);
     window.location.assign('/homepage'); // Redirect to homepage
-  };
-
-  const clearErrors = () => {
-    setSignUpNameError('');
-    setSignUpEmailError('');
-    setSignUpPasswordError('');
-    setSignUpPhoneNoError('');
-  };
-
-  const displayErrors = (errors) => {
-    if (errors.email) setSignUpEmailError(errors.email);
-    if (errors.password) setSignUpPasswordError(errors.password);
-    if (errors.name) setSignUpNameError(errors.name);
-    if (errors.phoneNumber) setSignUpPhoneNoError(errors.phoneNumber);
-    toast.error('Failed to sign up. Please check your information.');
   };
 
   return (

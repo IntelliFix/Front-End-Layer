@@ -11,7 +11,7 @@ export const PasswordStrength = ({ placeholder, onChange }) => {
     if (/[a-z]/.test(password)) indicator++;
     if (/[A-Z]/.test(password)) indicator++;
     if (/\d/.test(password)) indicator++;
-    if (/[^a-zA-Z0-9]/.test(password)) indicator++; // Includes special characters
+    if (/[^a-zA-Z0-9]/.test(password)) indicator++;
     if (password.length >= 16) indicator++;
     return strengthLabels[indicator];
 };
