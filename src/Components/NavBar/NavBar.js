@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import newLogo from "../../LOGO.png";
-import { BrowserRouter as Router, NavLink } from "react-router-dom"; // Import BrowserRouter
+import { BrowserRouter as Router, NavLink, Link, useNavigate } from "react-router-dom"; // Import BrowserRouter
 import "./NavBar.css";
-import { Link } from "react-router-dom";
 
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const onScroll = () => {
@@ -26,6 +27,14 @@ export const NavBar = () => {
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
   };
+
+  const isAuthenticated = !!localStorage.getItem("token");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/"); // Redirect to home page on logout
+  };
+
 
   return (
     <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
@@ -48,28 +57,35 @@ export const NavBar = () => {
             >
               Home
             </Nav.Link>
-            <Nav.Link
-              as={NavLink} // Use NavLink from react-router-dom
-              to="/codefixer"
-              className={
-                activeLink === "CodeFixer"
-                  ? "active navbar-link"
-                  : "navbar-link"
-              }
-              onClick={() => onUpdateActiveLink("CodeFixer")}
-            >
-              Codefixer
-            </Nav.Link>
-            <Nav.Link
-              as={NavLink} // Use NavLink from react-router-dom
-              to="/Chatbot"
-              className={
-                activeLink === "Chatbot" ? "active navbar-link" : "navbar-link"
-              }
-              onClick={() => onUpdateActiveLink("Chatbot")}
-            >
-              Chatbot
-            </Nav.Link>
+
+            {isAuthenticated && (
+              <>
+                <Nav.Link
+                  as={NavLink} // Use NavLink from react-router-dom
+                  to="/codefixer"
+                  className={
+                    activeLink === "CodeFixer"
+                      ? "active navbar-link"
+                      : "navbar-link"
+                  }
+                  onClick={() => onUpdateActiveLink("CodeFixer")}
+                >
+                  Codefixer
+                </Nav.Link>
+                <Nav.Link
+                  as={NavLink} // Use NavLink from react-router-dom
+                  to="/Chatbot"
+                  className={
+                    activeLink === "Chatbot" 
+                      ? "active navbar-link" 
+                      : "navbar-link"
+                  }
+                  onClick={() => onUpdateActiveLink("Chatbot")}
+                > 
+                  Chatbot
+                </Nav.Link>
+              </>
+            )}
           </Nav>
           <span className="navbar-text">
             {/* <div className="social-icon">
@@ -78,11 +94,18 @@ export const NavBar = () => {
               <a href="#"><img src={navIcon3} alt="" /></a>
             </div> */}
 
-            <Link to="/Authentication">
-              <button className="vvd">
-                <span>Sign Up or Login</span>
-              </button>
-            </Link>
+            {
+              isAuthenticated ? (
+                <button ClassName="vvd" onClick={handleLogout}>
+                  <span>Logout</span>
+                </button>
+              ) : (
+                <Link to="/Authentication">
+                  <button className="vvd">
+                    <span>Sign Up or Login</span>
+                  </button>
+                </Link>
+              )}  
           </span>
         </Navbar.Collapse>
       </Container>
