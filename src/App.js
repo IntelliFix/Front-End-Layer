@@ -12,6 +12,9 @@ import Codefixer from "./Components/Codefixer/Codefixer";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+
 function App() {
   return (
     <Router>
@@ -22,9 +25,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />{" "}
           {/* Use element prop instead of component */}
-          <Route path="/Chatbot" element={<Chat />} />
           <Route path="/Authentication" element={<Authentication />} />
-          <Route path="/Codefixer" element={<Codefixer />} />
+          {/* <Route path="/Chatbot" element={<Chat />} /> */}
+          <Route path="/Chatbot" element={<ProtectedRoute element={Chat} />} />
+          {/* <Route path="/Codefixer" element={<Codefixer />} /> */}
+          <Route path="/Codefixer" element={<ProtectedRoute element={Codefixer} />} />
         </Routes>
         <ToastContainer />
       </div>
