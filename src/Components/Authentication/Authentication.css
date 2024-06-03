@@ -137,10 +137,14 @@ p {
 
 .is-behind {
   animation: flipToBack 0.8s ease forwards;
+  filter: blur(7px);
+  z-index: -1;
+
 }
 
 .is-front {
   animation: flipToFront 0.8s ease forwards;
+  z-index: 1;
 }
 
 .login-card {
