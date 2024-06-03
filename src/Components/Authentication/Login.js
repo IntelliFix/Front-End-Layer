@@ -13,7 +13,7 @@ const Login = ({ flipSignUp }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    clearErrors(); // Clear previous errors before logging in
+    clearErrors();
     if(!logInEmail || !logInPassword){
       toast.error('Complete the missing data.');
     }

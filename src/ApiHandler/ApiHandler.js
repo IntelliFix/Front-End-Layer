@@ -72,11 +72,15 @@ class ApiHandler {
       if (data.user) {
         console.log(data.user);
         toast.success("Login successful!");
+
         localStorage.setItem("token", data.token);
-        window.location.assign("/Chatbot");
-        console.log("Login successful!");
         console.log("token: ", localStorage.getItem("token"));
-        window.location.assign("/Chatbot"); // which page to take the user to after signing up
+        
+        localStorage.setItem("name", data.name);
+        console.log("name: ", localStorage.getItem("name"));
+        
+        console.log("Login successful!");
+        // window.location.assign("/Chatbot");
       }
     } catch (err) {
       console.log(err);
@@ -122,33 +126,12 @@ class ApiHandler {
         console.log(data.user);
         localStorage.setItem("token", data.user);
         toast.success("Sign up successful!");
-        window.location.assign("/Chatbot"); // which page to take the user to after signing up
+        // window.location.assign("/Chatbot"); // which page to take the user to after signing up
       }
     } catch (err) {
       console.log(err);
     }
   }
 
-  // Add the getUserData function
-  static async getUserData() {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      throw new Error("No token found");
-    }
-    try {
-      const response = await axios.get(
-        `${ApiHandler.Url}/user`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-      throw error;
-    }
-  }
 }
 export default ApiHandler;

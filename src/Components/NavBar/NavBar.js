@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import newLogo from "../../LOGO.png";
 import { NavLink, Link, useNavigate } from "react-router-dom"; // Import NavLink and other necessary components
-import ApiHandler from "../../ApiHandler/ApiHandler";
 import "./NavBar.css";
 
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
-  const [userName, setUserName] = useState(null); // State to store user's name
+  // const [userName, setUserName] = useState(null); // State to store user's name
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,27 +24,13 @@ export const NavBar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const userData = await ApiHandler.getUserData();
-        setUserName(userData.name); // Assuming the response contains a 'name' field
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-
-    const token = localStorage.getItem("token");
-    if (token) {
-      fetchUserData();
-    }
-  }, []);
-
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
   };
 
   const isAuthenticated = !!localStorage.getItem("token");
+  const userName = localStorage.getItem("name");
+  console.log(userName);
 
   const handleLogout = () => {
     localStorage.removeItem("token");

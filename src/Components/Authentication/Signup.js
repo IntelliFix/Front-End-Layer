@@ -84,7 +84,7 @@ const Signup = ({ flipSignUp }) => {
         if (data.errors) {
           displayErrors(data.errors); // Display errors from the server response
         } else if (data.user) {
-          handleSuccessfulSignUp(data.user); // Handle successful sign-up
+          handleSuccessfulSignUp(data.user, data.signUpName);
         }
       } catch (err) {
         console.log(err);
@@ -96,10 +96,11 @@ const Signup = ({ flipSignUp }) => {
     }
   };
 
-  const handleSuccessfulSignUp = (token) => {
+  const handleSuccessfulSignUp = (token, name) => {
     toast.success('Sign up successful!');
     localStorage.setItem('token', token);
-    window.location.assign('/homepage'); // Redirect to homepage
+    localStorage.setItem('name', name);
+    // window.location.assign('/homepage'); // Redirect to homepage
   };
 
   return (
