@@ -15,6 +15,8 @@ const Signup = ({ flipSignUp }) => {
   const [signUpPasswordError, setSignUpPasswordError] = useState('');
   const [signUpPhoneNoError, setSignUpPhoneNoError] = useState('');
 
+  const [loading, setLoading] = useState(false);
+
   const clearErrors = () => {
     setSignUpNameError('');
     setSignUpEmailError('');
@@ -68,6 +70,7 @@ const Signup = ({ flipSignUp }) => {
     }
 
     if (signUpName && signUpEmail && signUpPhoneNo && signUpPassword) {
+      setLoading(true);
       try {
         const response = await ApiHandler.signup(
           signUpEmail,
@@ -92,6 +95,8 @@ const Signup = ({ flipSignUp }) => {
         //TODO (Backend)
         // We need to add a condition to check if the user is already signed up with the entered email 
         // and send a different error message
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -99,8 +104,8 @@ const Signup = ({ flipSignUp }) => {
   const handleSuccessfulSignUp = (token, name) => {
     toast.success('Sign up successful!');
     localStorage.setItem('token', token);
-    localStorage.setItem('name', name);
-    // window.location.assign('/homepage'); // Redirect to homepage
+    // localStorage.setItem('name', name);
+    window.location.assign('/Chatbot');
   };
 
   return (
@@ -148,7 +153,11 @@ const Signup = ({ flipSignUp }) => {
             <div className="password error">{signUpPasswordError}</div>
           </>
 
-          <button className='sign_in_up_button' type="button" onClick={handleSignUp}>Sign Up</button>
+          {/* <button className='sign_in_up_button' type="button" onClick={handleSignUp}>Sign Up</button> */}
+          <button className='sign_in_up_button' type="button" onClick={handleSignUp} disabled={loading}>
+            {loading ? 'Loading...' : 'Sign Up'}
+          </button>
+
           <button type="button" onClick={flipSignUp}>Already Have Account?</button>
         </form>
       </div>
