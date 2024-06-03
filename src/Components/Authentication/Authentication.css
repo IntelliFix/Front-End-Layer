@@ -111,10 +111,15 @@ p {
   border-radius: 5px;
   width: 70%;
   align-self: center;
-  background-color: #333;
+  /* background-color: #333; */
   color: #fff;
   cursor: pointer;
   margin-top: 5%;
+}
+
+.sign_in_up_button {
+  background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%, rgba(74, 47, 189, 0.5) 111.58%);
+  /* background-color: red; */
 }
 
 /* Apply styles for the flipped state */
@@ -201,4 +206,18 @@ p {
     z-index: 1;
     /* Ensure z-index remains 1 */
   }
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: #000;
 }

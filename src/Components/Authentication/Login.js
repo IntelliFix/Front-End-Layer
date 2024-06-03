@@ -11,6 +11,8 @@ const Login = ({ flipSignUp }) => {
   const [logInEmailError, setLogInEmailError] = useState('');
   const [logInPasswordError, setLogInPasswordError] = useState('');
 
+  const [loading, setLoading] = useState(false);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     clearErrors();
@@ -26,7 +28,7 @@ const Login = ({ flipSignUp }) => {
 
     if (logInEmail && logInPassword) {
       try {
-        await ApiHandler.login(logInEmail, logInPassword, setLogInEmailError, setLogInPasswordError);
+        await ApiHandler.login(logInEmail, logInPassword, setLogInEmailError, setLogInPasswordError, setLoading);
       } catch (err) {
         console.log(err);
         toast.error('An error occurred. Please try again later.');
@@ -65,7 +67,10 @@ const Login = ({ flipSignUp }) => {
           />
           <div className="password error">{logInPasswordError}</div>
 
-          <button type="button" onClick={handleLogin}>Login</button>
+          {/* <button type="button" onClick={handleLogin}>Login</button> */}
+          <button className='sign_in_up_button' type="button" onClick={handleLogin} disabled={loading}>
+            {loading ? 'Loading...' : 'Login'}
+          </button>
           <button type="button" onClick={flipSignUp}>New Account?</button>
         </form>
       </div>

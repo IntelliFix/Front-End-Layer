@@ -148,7 +148,7 @@ const Signup = ({ flipSignUp }) => {
             <div className="password error">{signUpPasswordError}</div>
           </>
 
-          <button type="button" onClick={handleSignUp}>Sign Up</button>
+          <button className='sign_in_up_button' type="button" onClick={handleSignUp}>Sign Up</button>
           <button type="button" onClick={flipSignUp}>Already Have Account?</button>
         </form>
       </div>

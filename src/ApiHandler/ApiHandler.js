@@ -47,8 +47,9 @@ class ApiHandler {
     return response.data;
   }
 
-  static async login(email, password, setEmailError, setPasswordError) {
+  static async login(email, password, setEmailError, setPasswordError, setLoading) {
     try {
+      setLoading(true);
       const response = await axios.post(
         `${ApiHandler.Url}/login`,
         {
@@ -76,16 +77,18 @@ class ApiHandler {
         localStorage.setItem("token", data.token);
         console.log("token: ", localStorage.getItem("token"));
         
-        localStorage.setItem("name", data.name);
-        console.log("name: ", localStorage.getItem("name"));
+        // localStorage.setItem("name", data.name);
+        // console.log("name: ", localStorage.getItem("name"));
         
         console.log("Login successful!");
-        // window.location.assign("/Chatbot");
+        window.location.assign("/Chatbot");
       }
     } catch (err) {
       console.log(err);
       toast.error("Wrong email or password!");
-    }
+    } finally {
+      setLoading(false);
+    } 
   }
 
   static async signup(
