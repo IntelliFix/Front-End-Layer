@@ -128,5 +128,27 @@ class ApiHandler {
       console.log(err);
     }
   }
+
+  // Add the getUserData function
+  static async getUserData() {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      throw new Error("No token found");
+    }
+    try {
+      const response = await axios.get(
+        `${ApiHandler.Url}/user`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      throw error;
+    }
+  }
 }
 export default ApiHandler;

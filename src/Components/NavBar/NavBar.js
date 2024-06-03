@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import newLogo from "../../LOGO.png";
-import { BrowserRouter as Router, NavLink, Link, useNavigate } from "react-router-dom"; // Import BrowserRouter
+import { NavLink, Link, useNavigate } from "react-router-dom"; // Import NavLink and other necessary components
+import ApiHandler from "../../ApiHandler/ApiHandler";
 import "./NavBar.css";
 
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+  const [userName, setUserName] = useState(null); // State to store user's name
   const navigate = useNavigate();
-
 
   useEffect(() => {
     const onScroll = () => {
@@ -24,6 +25,22 @@ export const NavBar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userData = await ApiHandler.getUserData();
+        setUserName(userData.name); // Assuming the response contains a 'name' field
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetchUserData();
+    }
+  }, []);
+
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
   };
@@ -34,7 +51,6 @@ export const NavBar = () => {
     localStorage.removeItem("token");
     navigate("/"); // Redirect to home page on logout
   };
-
 
   return (
     <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
@@ -76,36 +92,32 @@ export const NavBar = () => {
                   as={NavLink} // Use NavLink from react-router-dom
                   to="/Chatbot"
                   className={
-                    activeLink === "Chatbot" 
-                      ? "active navbar-link" 
+                    activeLink === "Chatbot"
+                      ? "active navbar-link"
                       : "navbar-link"
                   }
                   onClick={() => onUpdateActiveLink("Chatbot")}
-                > 
+                >
                   Chatbot
                 </Nav.Link>
               </>
             )}
           </Nav>
           <span className="navbar-text">
-            {/* <div className="social-icon">
-              <a href="#"><img src={navIcon1} alt="" /></a>
-              <a href="#"><img src={navIcon2} alt="" /></a>
-              <a href="#"><img src={navIcon3} alt="" /></a>
-            </div> */}
-
-            {
-              isAuthenticated ? (
-                <button ClassName="vvd" onClick={handleLogout}>
+            {isAuthenticated ? (
+              <>
+                <span className="navbar-username">Welcome, {userName}</span>
+                <button className="vvd" onClick={handleLogout}>
                   <span>Logout</span>
                 </button>
-              ) : (
-                <Link to="/Authentication">
-                  <button className="vvd">
-                    <span>Sign Up or Login</span>
-                  </button>
-                </Link>
-              )}  
+              </>
+            ) : (
+              <Link to="/Authentication">
+                <button className="vvd">
+                  <span>Sign Up or Login</span>
+                </button>
+              </Link>
+            )}
           </span>
         </Navbar.Collapse>
       </Container>
