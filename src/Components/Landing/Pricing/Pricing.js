@@ -3,6 +3,16 @@ import { ProjectCard } from "./ProjectCard";
 import projImg1 from "../../../assets/img/project-img1.png";
 import projImg2 from "../../../assets/img/project-img2.png";
 import projImg3 from "../../../assets/img/project-img3.png";
+
+import ziad from "../../../assets/img/team pics/ziad.jpeg";
+import matar from "../../../assets/img/team pics/matar.jpeg";
+import fathy from "../../../assets/img/team pics/fathy.jpeg";
+import karim from "../../../assets/img/team pics/karim.jpeg";
+import migo from "../../../assets/img/team pics/migo.jpeg";
+import alia from "../../../assets/img/team pics/alia.jpeg";
+
+
+
 import colorSharp2 from "../../../assets/img/color-sharp2.png";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
@@ -20,32 +30,33 @@ export const Pricings = () => {
     {
       title: "Ziad Assem",
       description: "Frontend Development",
-      imgUrl: projImg1,
-    },
-    {
-      title: "Mohamed Abdelmegeed",
-      description: "AI Engineering",
-      imgUrl: projImg2,
+      imgUrl: ziad,
     },
     {
       title: "Mohamed Fathy",
       description: "DevOps",
-      imgUrl: projImg3,
+      imgUrl: fathy,
     },
     {
-      title: "Karim Ashraf",
+      title: "Mohamed Abdelmegeed",
       description: "AI Engineering",
-      imgUrl: projImg1,
+      imgUrl: migo,
     },
     {
       title: "Mohamed Matar",
       description: "Frontend Development",
-      imgUrl: projImg2,
+      imgUrl: matar,
     },
+    {
+      title: "Karim Ashraf",
+      description: "AI Engineering",
+      imgUrl: karim,
+    },
+
     {
       title: "Alia Tamer",
       description: "Backend Development",
-      imgUrl: projImg3,
+      imgUrl: alia,
     },
   ];
 
