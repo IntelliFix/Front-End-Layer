@@ -15,9 +15,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 
+import PageTitle from "./PageTitle.js";
+
 function App() {
   return (
     <Router>
+      <PageTitle />
       {" "}
       {/* Wrap the entire component tree with Router */}
       <div className="App">

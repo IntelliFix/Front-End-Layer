@@ -5,11 +5,13 @@
 
   font-weight: 700;
 }
+
 @font-face {
   font-family: Centra;
   src: url("./assets/font/CentraNo2-Medium.ttf");
   font-weight: 500;
 }
+
 @font-face {
   font-family: Centra;
   src: url("./assets/font/CentraNo2-Book.ttf");
@@ -115,6 +117,7 @@ body {
 .buttons {
   margin: 10px;
 }
+
 .title {
   color: whitesmoke;
 }
@@ -159,6 +162,7 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
