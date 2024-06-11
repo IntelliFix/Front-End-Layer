@@ -148,7 +148,14 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   border-color: transparent;
 }
 
-
-.navbar-username{
-  color: white;
+.welcome-text{
+  color: #fff;
+}
+.navbar-username {
+  /* Apply the brighter gradient background */
+  background-image: linear-gradient(90.21deg, rgba(170, 54, 124, 1) -5.91%, rgba(74, 47, 189, 1) 111.58%);
+  /* Clip the background to the text */
+  -webkit-background-clip: text;
+  /* Set the text fill color to transparent */
+  -webkit-text-fill-color: transparent;
 }

@@ -77,8 +77,8 @@ class ApiHandler {
         localStorage.setItem("token", data.token);
         console.log("token: ", localStorage.getItem("token"));
         
-        // localStorage.setItem("name", data.name);
-        // console.log("name: ", localStorage.getItem("name"));
+        localStorage.setItem("name", data.name);
+        console.log("name: ", localStorage.getItem("name"));
         
         console.log("Login successful!");
         window.location.assign("/Chatbot");
