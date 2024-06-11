@@ -224,3 +224,41 @@ button[disabled] {
   font-size: 20px;
   color: #000;
 }
+
+
+/* password eye */
+
+#password{
+  width: 90%;
+}
+.password-input-container {
+  align-self: center;
+  width: 70%;
+}
+
+.right-half form input {
+  margin-bottom: 5%;
+  padding: 3%;
+  border: 2px solid #333;
+  border-radius: 10px;
+  width: 70%;
+  align-self: center;
+}
+
+.password-input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px;
+  /* Add space for the eye icon */
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

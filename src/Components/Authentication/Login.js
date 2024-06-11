@@ -4,19 +4,45 @@ import ApiHandler from '../../ApiHandler/ApiHandler';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Authentication.css';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
+import { Icon } from 'react-icons-kit';
+import { eyeOff } from 'react-icons-kit/feather/eyeOff';
+import { eye } from 'react-icons-kit/feather/eye'
 
 const Login = ({ flipSignUp }) => {
   const [logInEmail, setLogInEmail] = useState('');
   const [logInPassword, setLogInPassword] = useState('');
   const [logInEmailError, setLogInEmailError] = useState('');
   const [logInPasswordError, setLogInPasswordError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  
+  const [type, setType] = useState('password');
+  const [icon, setIcon] = useState(eyeOff);
+
 
   const [loading, setLoading] = useState(false);
+
+  // const togglePasswordVisibility = () => {
+  //   setShowPassword(!showPassword);
+  // };
+
+  const togglePasswordVisibility = () => {
+    if (type === 'password') {
+      setIcon(eye);
+      setType('text')
+    } else {
+      setIcon(eyeOff)
+      setType('password')
+    }
+  }
+
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
     clearErrors();
-    if(!logInEmail || !logInPassword){
+    if (!logInEmail || !logInPassword) {
       toast.error('Complete the missing data.');
     }
     if (!logInEmail) {
@@ -43,7 +69,7 @@ const Login = ({ flipSignUp }) => {
 
   return (
     <div className="card-front">
-      <div className="left-half" style={{textAlign: 'center'}}>
+      <div className="left-half" style={{ textAlign: 'center' }}>
         <h2>Welcome Back!</h2>
         <p>Please login to access your account.</p>
       </div>
@@ -58,13 +84,28 @@ const Login = ({ flipSignUp }) => {
           />
           <div className="email error">{logInEmailError}</div>
 
-          <input
+          {/* <input
             type="password"
             placeholder="Password"
             value={logInPassword}
             onChange={(e) => setLogInPassword(e.target.value)}
             required
-          />
+          /> */}
+          <div class="mb-4 flex">
+            <input
+              type={type}
+              name="password"
+              placeholder="Password"
+              value={logInPassword}
+              onChange={(e) => setLogInPassword(e.target.value)}
+              required
+              className='password-input'
+              autoComplete="current-password"
+            />
+            <span className="flex justify-around items-center" onClick={togglePasswordVisibility}> 
+              <Icon className="absolute mr-10 color-white" icon={icon} size={25} />
+            </span>
+          </div>
           <div className="password error">{logInPasswordError}</div>
 
           {/* <button type="button" onClick={handleLogin}>Login</button> */}
