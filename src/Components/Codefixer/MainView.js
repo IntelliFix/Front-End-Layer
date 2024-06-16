@@ -74,7 +74,7 @@ function MainView() {
             }}
           />
           <Box className="chat-input">
-            <input
+            <textarea
               ref={inputRef}
               type="text"
               value={comment}
@@ -84,7 +84,16 @@ function MainView() {
                   handleButtonClick();
                 }
               }}
-              placeholder="Type your message..."
+              placeholder="Type additional comments here..."
+              rows="2"
+              style={{
+                width: "100%",
+                whiteSpace: 'pre-wrap',
+                overflowWrap: 'break-word',
+                border: 'none',
+                outline: 'none',
+                resize: 'none'
+              }}
             />
             <IconButton onClick={handleButtonClick}>
               <IoMdSend />
@@ -126,7 +135,10 @@ function MainView() {
               style={{
                 width: "100%",
                 resize: "none", // Prevents resizing, can be omitted if resizing is desired
-                boxSizing: "border-box", // Ensures the padding and border are included in the element's total width and height
+                boxSizing: "border-box",
+                border: 'none',
+                outline: 'none',
+                resize: 'none' // Ensures the padding and border are included in the element's total width and height
               }}
               readOnly
             />
