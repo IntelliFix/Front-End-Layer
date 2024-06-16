@@ -36,9 +36,9 @@ function MainView() {
       const response = await ApiHandler.submitCode(formattedCode, comment);
       console.log(response);
       var correctedCode = response["data"]["corrected_code"];
-      // if (correctedCode.startsWith("```python")) {
-      //   correctedCode = correctedCode.split("```");
-      // }
+      if (correctedCode.startsWith("```python")) {
+        correctedCode = correctedCode.split("```");
+      }
       setCodeResult(correctedCode); // Assuming the response contains the result
       setCommentResult(response["data"]["comment"]); // Assuming the response contains the result
       console.log("Result");

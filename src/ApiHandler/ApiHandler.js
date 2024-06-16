@@ -128,8 +128,9 @@ class ApiHandler {
       if (data.user) {
         console.log(data.user);
         localStorage.setItem("token", data.user);
+        localStorage.setItem("name", data.name);
         toast.success("Sign up successful!");
-        // window.location.assign("/Chatbot"); // which page to take the user to after signing up
+        window.location.assign("/Chatbot"); // which page to take the user to after signing up
       }
     } catch (err) {
       console.log(err);
