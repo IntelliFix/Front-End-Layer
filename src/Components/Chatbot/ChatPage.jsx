@@ -5,6 +5,8 @@ import { FaPython } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import ApiHandler from "../../ApiHandler/ApiHandler";
 import ReactLoading from "react-loading";
+import Highlight from "react-highlight"; 
+import "highlight.js/styles/atom-one-dark.css"; // You can choose any highlight.js theme you prefer
 import "./Chatbot.css"; // Import the CSS file
 
 export const Chat = () => {
@@ -52,9 +54,9 @@ export const Chat = () => {
       } else {
         return (
           <Box key={index} sx={{ bgcolor: "#272822", p: 2, borderRadius: 2, my: 1 }}>
-            <pre style={{ margin: 0 }}>
-              <code>{part}</code>
-            </pre>
+            <Highlight className="python">
+              {part}
+            </Highlight>
           </Box>
         );
       }
