@@ -4,7 +4,6 @@ import ApiHandler from '../../ApiHandler/ApiHandler';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Authentication.css';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
@@ -15,17 +14,11 @@ const Login = ({ flipSignUp }) => {
   const [logInPassword, setLogInPassword] = useState('');
   const [logInEmailError, setLogInEmailError] = useState('');
   const [logInPasswordError, setLogInPasswordError] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  
+
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
 
-
   const [loading, setLoading] = useState(false);
-
-  // const togglePasswordVisibility = () => {
-  //   setShowPassword(!showPassword);
-  // };
 
   const togglePasswordVisibility = () => {
     if (type === 'password') {
@@ -36,8 +29,6 @@ const Login = ({ flipSignUp }) => {
       setType('password')
     }
   }
-
-
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -84,31 +75,24 @@ const Login = ({ flipSignUp }) => {
           />
           <div className="email error">{logInEmailError}</div>
 
-          {/* <input
-            type="password"
-            placeholder="Password"
-            value={logInPassword}
-            onChange={(e) => setLogInPassword(e.target.value)}
-            required
-          /> */}
-          <div class="mb-4 flex">
+          <div className="password-input-container">
             <input
+              id='password-input'
               type={type}
               name="password"
               placeholder="Password"
               value={logInPassword}
               onChange={(e) => setLogInPassword(e.target.value)}
               required
-              className='password-input'
               autoComplete="current-password"
             />
-            <span className="flex justify-around items-center" onClick={togglePasswordVisibility}> 
-              <Icon className="absolute mr-10 color-white" icon={icon} size={25} />
+            <span onClick={togglePasswordVisibility}>
+              <Icon className="password-toggle-icon" icon={icon} size={25} />
             </span>
           </div>
-          <div className="password error">{logInPasswordError}</div>
 
-          {/* <button type="button" onClick={handleLogin}>Login</button> */}
+          <div className="password-error">{logInPasswordError}</div>
+
           <button className='sign_in_up_button' type="button" onClick={handleLogin} disabled={loading}>
             {loading ? 'Loading...' : 'Login'}
           </button>

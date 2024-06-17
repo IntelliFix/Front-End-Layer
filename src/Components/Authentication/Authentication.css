@@ -1,3 +1,9 @@
+/* Hide built-in eye icon for password input in Microsoft Edge and Internet Explorer */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
 /* sign in and sign up styles */
 
 button {
@@ -12,11 +18,17 @@ button {
   margin-bottom: 10px;
 }
 
+.password-error{
+  position: relative;
+  color: red;
+  font-size: 12px;
+  text-align: center;
+}
+
 /* Card flip */
 body {
   color: #fff;
-  font-size: large;
-
+  font-size: medium;
 }
 
 h2 {
@@ -30,7 +42,6 @@ p {
   font-size: larger;
   font-weight: bold;
   color: #fff;
-
 }
 
 .authentication-container {
@@ -87,19 +98,18 @@ p {
   flex: 1;
 }
 
-
 .right-half form {
   padding-top: 7%;
   padding-bottom: 7%;
   display: flex;
   flex-direction: column;
-
 }
 
 .right-half form input {
   margin-bottom: 5%;
   padding: 3%;
-  border: 2px solid #333;
+  /* border: 2px solid #333; */
+  border: none;
   border-radius: 10px;
   width: 70%;
   align-self: center;
@@ -123,7 +133,6 @@ p {
 
 /* Apply styles for the flipped state */
 
-
 .signup-card {
   width: 50vh;
   height: auto;
@@ -139,7 +148,6 @@ p {
   animation: flipToBack 0.8s ease forwards;
   filter: blur(7px);
   z-index: -1;
-
 }
 
 .is-front {
@@ -164,10 +172,6 @@ p {
   transform: rotateY(180deg);
   background-color: #f0f0f0;
 }
-
-/* .card-back button {
-    margin-top: 20px;
-  } */
 
 @keyframes flipToBack {
   0% {
@@ -207,7 +211,6 @@ p {
     transform: translateX(0);
     /* Translate back to original position */
     z-index: 1;
-    /* Ensure z-index remains 1 */
   }
 }
 
@@ -225,40 +228,38 @@ button[disabled] {
   color: #000;
 }
 
-
-/* password eye */
-
-#password{
-  width: 90%;
-}
+/* password inpu box */
 .password-input-container {
+  display: flex;
+  flex-direction: row;
+  
   align-self: center;
-  width: 70%;
-}
+  align-items: center;
+  justify-content: space-between;
 
-.right-half form input {
-  margin-bottom: 5%;
-  padding: 3%;
-  border: 2px solid #333;
+  background-color: white;
+  /* position: relative; */
+  
+  width: 70%;
+  
   border-radius: 10px;
-  width: 70%;
-  align-self: center;
-}
-
-.password-input {
-  width: 100%;
-  padding: 10px;
-  padding-right: 40px;
-  /* Add space for the eye icon */
-  border-radius: 5px;
-  border: 1px solid #ccc;
   box-sizing: border-box;
 }
 
-.password-toggle-icon {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  cursor: pointer;
+#password-input{
+  background-color: transparent;
+  align-self: center;
+  justify-self: center;
+  
+  margin-bottom: 0;
+
+  padding: 3%;
+  /* border: 2px solid #333; */
+  border: none;
+  border-radius: 10px;
+  width: 70%;
+}
+
+.password-toggle-icon{
+  padding-right: 5px;
 }
