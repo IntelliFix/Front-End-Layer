@@ -65,6 +65,7 @@
   transition: transform 0.5s ease;
 }
 
+
 .inputs.hide {
   transform: translateX(-100%);
 }

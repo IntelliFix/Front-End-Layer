@@ -85,7 +85,7 @@ function MainView() {
                 }
               }}
               placeholder="Type additional comments here..."
-              rows="2"
+              rows="4"
               style={{
                 width: "100%",
                 whiteSpace: 'pre-wrap',
@@ -101,7 +101,7 @@ function MainView() {
           </Box>
         </div>
 
-        <div className={`outputs ${mode !== "Buggy" ? "show" : "hide"}`}>
+        <div className={`outputs ${mode !== "Buggy" ? "show" : "hide"} `}>
           {loading ? (
             <Box
               display="flex"
@@ -112,6 +112,7 @@ function MainView() {
               <CircularProgress />
             </Box>
           ) : (<Editor
+             
               height="430px"
               language="python"
               theme="vs-dark"
