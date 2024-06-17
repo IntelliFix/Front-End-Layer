@@ -4,7 +4,7 @@ import MainView from './MainView.js';
 
 function Codefixer() {
   return (
-    <div className="main-container">
+    <div>
       <MainView/>
     </div>
   );

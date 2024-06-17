@@ -39,7 +39,7 @@ export const NavBar = () => {
 
   return (
     <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
-      <Container>
+      <Container className="nav-container">
         <Navbar.Brand href="/">
           <img src={newLogo} alt="IntelliFix-Logo" />
         </Navbar.Brand>
