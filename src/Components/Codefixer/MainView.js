@@ -111,8 +111,7 @@ function MainView() {
             >
               <CircularProgress />
             </Box>
-          ) : (
-            <Editor
+          ) : (<Editor
               height="430px"
               language="python"
               theme="vs-dark"
