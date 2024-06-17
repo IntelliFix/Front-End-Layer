@@ -35,11 +35,30 @@ export const Chat = () => {
     } catch (error) {
       setMessages((prevMessages) => [
         ...prevMessages,
-        { content: "Sorry an error has occured...", role: "assistant" },
+        { content: "Sorry, an error has occurred...", role: "assistant" },
       ]);
       console.log(error);
       setIsTyping(false);
     }
+  };
+
+  const formatMessage = (content) => {
+    const codePattern = /```python([\s\S]*?)```/g;
+    const parts = content.split(codePattern);
+
+    return parts.map((part, index) => {
+      if (index % 2 === 0) {
+        return <Typography key={index} sx={{ color: "white" }}>{part}</Typography>;
+      } else {
+        return (
+          <Box key={index} sx={{ bgcolor: "#272822", p: 2, borderRadius: 2, my: 1 }}>
+            <pre style={{ margin: 0 }}>
+              <code>{part}</code>
+            </pre>
+          </Box>
+        );
+      }
+    });
   };
 
   return (
@@ -97,16 +116,12 @@ export const Chat = () => {
             <Typography
               sx={{
                 mx: "auto",
-                // fontFamily: "work sans",
                 my: 4,
                 p: 3,
                 color: "white",
               }}
             >
-              You can ask me any kind of questions regarding python, python
-              frameworks or libraries, and even programming concepts! Sadly I
-              won't be able to help you with anything else rather than python
-              because the IntelliFix team programmed me to do so :(
+              You can ask me any kind of questions regarding Python, Python frameworks or libraries, and even programming concepts! Sadly I won't be able to help you with anything else other than Python because the IntelliFix team programmed me to do so :(
             </Typography>
           </Box>
         </Box>
@@ -123,13 +138,15 @@ export const Chat = () => {
           <Box className="chat-container">
             <Box className="chat-messages">
               {messages.map((chat, index) => (
-                <div key={index} className={`chat-message ${chat.role}`}>
-                  {chat.content}
+                <div key={index} className={`chat-message ${chat.role}`} style={{ display: 'flex', flexDirection: 'row-reverse', alignItems: 'flex-start', marginBottom: '10px', justifyContent: 'space-between' }}>
                   {chat.role === "user" ? (
-                    <FaUser className="icon" />
+                    <FaUser className="icon" style={{ marginRight: '10px', marginTop: '5px' }} />
                   ) : (
-                    <FaPython className="icon" />
+                    <FaPython className="icon" style={{ marginRight: '10px', marginTop: '5px' }} />
                   )}
+                  <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                    {formatMessage(chat.content)}
+                  </Box>
                 </div>
               ))}
               {isTyping && (
