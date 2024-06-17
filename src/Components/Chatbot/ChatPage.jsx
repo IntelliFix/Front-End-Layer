@@ -162,9 +162,9 @@ export const Chat = () => {
             </Box>
 
             <Box className="chat-input">
-              <input
-                ref={inputRef}
+              <textarea
                 type="text"
+                ref={inputRef}
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 onKeyDown={(e) => {
@@ -173,6 +173,15 @@ export const Chat = () => {
                   }
                 }}
                 placeholder="Type your message..."
+                rows="1"
+                style={{
+                  width: "100%",
+                  whiteSpace: 'pre-wrap',
+                  overflowWrap: 'break-word',
+                  border: 'none',
+                  outline: 'none',
+                  resize: 'none'
+                }}
               />
               <IconButton onClick={handleSubmit} disabled={isTyping}>
                 <IoMdSend />
