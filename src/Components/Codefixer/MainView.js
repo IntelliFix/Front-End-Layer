@@ -50,7 +50,8 @@ function MainView() {
       setLoading(false);
     }
   };
-  
+
+
   return (
     <div className="main-container">
       <div>
@@ -112,20 +113,20 @@ function MainView() {
               <CircularProgress />
             </Box>
           ) : (<Editor
-             
-              height="430px"
-              language="python"
-              theme="vs-dark"
-              value={codeResult}
-              onChange={(value) => setCodeResult(value)}
-              options={{
-                inlineSuggest: true,
-                fontSize: "14px",
-                marginBottom: "8px",
-                formatOnType: true,
-                autoClosingBrackets: true,
-              }}
-            />
+
+            height="430px"
+            language="python"
+            theme="vs-dark"
+            value={codeResult}
+            onChange={(value) => setCodeResult(value)}
+            options={{
+              inlineSuggest: true,
+              fontSize: "14px",
+              marginBottom: "8px",
+              formatOnType: true,
+              autoClosingBrackets: true,
+            }}
+          />
           )}
           <Box className="chat-input">
             <textarea
