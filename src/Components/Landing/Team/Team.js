@@ -16,8 +16,8 @@ import alia from "../../../assets/img/team pics/alia.jpeg";
 import colorSharp2 from "../../../assets/img/color-sharp2.png";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
-import { PricingCard } from "./PricingCard";
-import "./Pricing.css";
+import { PricingCard } from "./TeamCard";
+import "./Team.css";
 
 export const Pricings = () => {
   const pricing = {
