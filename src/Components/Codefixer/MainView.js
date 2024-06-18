@@ -50,7 +50,7 @@ function MainView() {
       setLoading(false);
     }
   };
-
+  
   return (
     <div className="main-container">
       <div>
