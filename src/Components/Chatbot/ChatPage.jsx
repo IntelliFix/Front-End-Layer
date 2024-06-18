@@ -92,7 +92,7 @@ export const Chat = () => {
         return <Typography key={index} sx={{ color: "white" }}>{formattedText}</Typography>;
       } else {
         return (
-          <Box key={index} sx={{ bgcolor: "#272822", p: 2, borderRadius: 2, my: 1 }}>
+          <Box key={index} sx={{ bgcolor: "#272822", p: 1, borderRadius: 2, my: 1 }}>
             <Highlight className="python">
               {part}
             </Highlight>
