@@ -91,10 +91,10 @@ export const NavBar = () => {
           <span className="navbar-text">
             {isAuthenticated ? (
               <>
-                <span className="welcome-text">Hi, <span className="navbar-username">{userName}</span></span>
                 <button className="vvd" onClick={handleLogout}>
                   <span>Logout</span>
                 </button>
+                <span className="welcome-text">Hi, <span className="navbar-username">{userName}</span></span>
               </>
             ) : (
               <Link to="/Authentication">

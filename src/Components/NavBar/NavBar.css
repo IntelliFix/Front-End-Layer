@@ -173,6 +173,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .welcome-text {
+  margin: 0  0  0 10px;
   color: #fff;
 }
 
