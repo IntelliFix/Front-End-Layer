@@ -45,12 +45,51 @@ export const Chat = () => {
   };
 
   const formatMessage = (content) => {
+    // Patterns for different markdown formats
     const codePattern = /```python([\s\S]*?)```/g;
+    const boldPattern = /\*\*(.*?)\*\*/g;
+    const italicPattern = /\*(.*?)\*/g;
+    const underlinePattern = /__(.*?)__/g;
+    const inlineCodePattern = /`([^`]+)`/g;
+  
+    const formatText = (text) => {
+      if (typeof text !== 'string') return text;
+  
+      // Handling inline code
+      let formattedText = text.split(inlineCodePattern).map((part, index) =>
+        index % 2 === 0 ? part : <code key={index} style={{ backgroundColor: '#272822', padding: '0 4px', borderRadius: '3px' }}>{part}</code>
+      );
+  
+      // Handling bold text
+      formattedText = formattedText.map((part, index) =>
+        typeof part === 'string' ? part.split(boldPattern).map((subPart, subIndex) =>
+          subIndex % 2 === 0 ? subPart : <strong key={`${index}-${subIndex}`}>{subPart}</strong>
+        ) : part
+      ).flat();
+  
+      // Handling italic text
+      formattedText = formattedText.map((part, index) =>
+        typeof part === 'string' ? part.split(italicPattern).map((subPart, subIndex) =>
+          subIndex % 2 === 0 ? subPart : <em key={`${index}-${subIndex}`}>{subPart}</em>
+        ) : part
+      ).flat();
+  
+      // Handling underlined text
+      formattedText = formattedText.map((part, index) =>
+        typeof part === 'string' ? part.split(underlinePattern).map((subPart, subIndex) =>
+          subIndex % 2 === 0 ? subPart : <u key={`${index}-${subIndex}`}>{subPart}</u>
+        ) : part
+      ).flat();
+  
+      return formattedText;
+    };
+  
     const parts = content.split(codePattern);
-
+  
     return parts.map((part, index) => {
       if (index % 2 === 0) {
-        return <Typography key={index} sx={{ color: "white" }}>{part}</Typography>;
+        const formattedText = formatText(part);
+        return <Typography key={index} sx={{ color: "white" }}>{formattedText}</Typography>;
       } else {
         return (
           <Box key={index} sx={{ bgcolor: "#272822", p: 2, borderRadius: 2, my: 1 }}>
@@ -62,6 +101,7 @@ export const Chat = () => {
       }
     });
   };
+  
 
   return (
     <>
@@ -146,7 +186,7 @@ export const Chat = () => {
                   ) : (
                     <FaPython className="icon" style={{ marginRight: '10px', marginTop: '5px' }} />
                   )}
-                  <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', textAlign: 'left', alignItems: 'flex-start' }}>
                     {formatMessage(chat.content)}
                   </Box>
                 </div>
