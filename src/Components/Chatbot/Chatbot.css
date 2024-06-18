@@ -53,11 +53,9 @@ body {
   align-self: flex-end;
   /* background-color: gold;
    */
-  background: linear-gradient(
-    90.21deg,
-    rgba(170, 54, 124, 0.5) -5.91%,
-    rgba(74, 47, 189, 0.5) 111.58%
-  );
+  background: linear-gradient(90.21deg,
+      rgba(170, 54, 124, 0.5) -5.91%,
+      rgba(74, 47, 189, 0.5) 111.58%);
   color: rgb(255, 255, 255);
 }
 
@@ -84,6 +82,7 @@ body {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -123,11 +122,9 @@ body {
   border-radius: 50px;
   /* background-color: gold; */
   color: black;
-  background: linear-gradient(
-    90.21deg,
-    rgba(170, 54, 124, 0.5) -5.91%,
-    rgba(74, 47, 189, 0.5) 111.58%
-  );
+  background: linear-gradient(90.21deg,
+      rgba(170, 54, 124, 0.5) -5.91%,
+      rgba(74, 47, 189, 0.5) 111.58%);
   cursor: pointer;
   display: flex;
   align-items: center;

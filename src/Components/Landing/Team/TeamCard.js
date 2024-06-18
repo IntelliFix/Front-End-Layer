@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PricingCard = () => {
+export const TeamCard = () => {
   return (
     <center>
     <div className="pricing-card" >

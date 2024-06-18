@@ -5,7 +5,7 @@ import { FaPython } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import ApiHandler from "../../ApiHandler/ApiHandler";
 import ReactLoading from "react-loading";
-import Highlight from "react-highlight"; 
+import Highlight from "react-highlight";
 import "highlight.js/styles/atom-one-dark.css"; // You can choose any highlight.js theme you prefer
 import "./Chatbot.css"; // Import the CSS file
 
@@ -51,41 +51,41 @@ export const Chat = () => {
     const italicPattern = /\*(.*?)\*/g;
     const underlinePattern = /__(.*?)__/g;
     const inlineCodePattern = /`([^`]+)`/g;
-  
+
     const formatText = (text) => {
       if (typeof text !== 'string') return text;
-  
+
       // Handling inline code
       let formattedText = text.split(inlineCodePattern).map((part, index) =>
         index % 2 === 0 ? part : <code key={index} style={{ backgroundColor: '#272822', padding: '0 4px', borderRadius: '3px' }}>{part}</code>
       );
-  
+
       // Handling bold text
       formattedText = formattedText.map((part, index) =>
         typeof part === 'string' ? part.split(boldPattern).map((subPart, subIndex) =>
           subIndex % 2 === 0 ? subPart : <strong key={`${index}-${subIndex}`}>{subPart}</strong>
         ) : part
       ).flat();
-  
+
       // Handling italic text
       formattedText = formattedText.map((part, index) =>
         typeof part === 'string' ? part.split(italicPattern).map((subPart, subIndex) =>
           subIndex % 2 === 0 ? subPart : <em key={`${index}-${subIndex}`}>{subPart}</em>
         ) : part
       ).flat();
-  
+
       // Handling underlined text
       formattedText = formattedText.map((part, index) =>
         typeof part === 'string' ? part.split(underlinePattern).map((subPart, subIndex) =>
           subIndex % 2 === 0 ? subPart : <u key={`${index}-${subIndex}`}>{subPart}</u>
         ) : part
       ).flat();
-  
+
       return formattedText;
     };
-  
+
     const parts = content.split(codePattern);
-  
+
     return parts.map((part, index) => {
       if (index % 2 === 0) {
         const formattedText = formatText(part);
@@ -101,7 +101,7 @@ export const Chat = () => {
       }
     });
   };
-  
+
 
   return (
     <>

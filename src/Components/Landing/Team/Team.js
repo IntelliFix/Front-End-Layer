@@ -1,8 +1,5 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
-import projImg1 from "../../../assets/img/project-img1.png";
-import projImg2 from "../../../assets/img/project-img2.png";
-import projImg3 from "../../../assets/img/project-img3.png";
 
 import ziad from "../../../assets/img/team pics/ziad.jpeg";
 import matar from "../../../assets/img/team pics/matar.jpeg";
@@ -16,17 +13,17 @@ import alia from "../../../assets/img/team pics/alia.jpeg";
 import colorSharp2 from "../../../assets/img/color-sharp2.png";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
-import { PricingCard } from "./TeamCard";
+import { TeamCard } from "./TeamCard";
 import "./Team.css";
 
-export const Pricings = () => {
-  const pricing = {
-    title: "Regular",
-    description: "Design & Development",
-    imgUrl: projImg1,
-  };
+export const Team = () => {
+  // const pricing = {
+  //   title: "Regular",
+  //   description: "Design & Development",
+  //   imgUrl: projImg1,
+  // };
 
-  const projects = [
+  const members = [
     {
       title: "Ziad Assem",
       description: "Frontend Development",
@@ -83,13 +80,13 @@ export const Pricings = () => {
                     >
                       <Tab.Pane eventKey="first">
                         <Row>
-                          {projects.map((project, index) => {
+                          {members.map((project, index) => {
                             return <ProjectCard key={index} {...project} />;
                           })}
                         </Row>
                       </Tab.Pane>
                       <Tab.Pane eventKey="second">
-                        <PricingCard></PricingCard>
+                        <TeamCard></TeamCard>
                       </Tab.Pane>
                       <Tab.Pane eventKey="third">
                         <p>
