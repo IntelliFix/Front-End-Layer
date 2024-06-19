@@ -36,9 +36,12 @@ function MainView() {
       const response = await ApiHandler.submitCode(formattedCode, comment);
       console.log(response);
       var correctedCode = response["data"]["corrected_code"];
-      if (correctedCode.startsWith("```python")) {
-        correctedCode = correctedCode.split("```");
-      }
+      
+      //  !!! THE CODE BELOW WAS THE PROBLEM !!!
+      // if (correctedCode.startsWith("```python")) {
+      //   correctedCode = correctedCode.split("```");
+      // }
+
       setCodeResult(correctedCode); // Assuming the response contains the result
       setCommentResult(response["data"]["comment"]); // Assuming the response contains the result
       console.log("Result");
@@ -139,7 +142,6 @@ function MainView() {
                 boxSizing: "border-box",
                 border: 'none',
                 outline: 'none',
-                resize: 'none' // Ensures the padding and border are included in the element's total width and height
               }}
               readOnly
             />
