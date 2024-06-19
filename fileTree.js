@@ -4,7 +4,7 @@ const recursive = require('recursive-readdir');
 
 // Define the directory to scan and the exclusions
 const directoryPath = 'D:\\Projects\\Front-End-Layer';
-const exclusions = ['node_modules', '.git', '*.html', '*.cs'];
+const exclusions = ['node_modules', '.git', '*.html', '*.cs', '*.ico', 'assets', '*.txt', '*.md', '*.json', '*.png'];
 
 // Read the directory structure recursively
 recursive(directoryPath, exclusions, function (err, files) {
