@@ -1,0 +1,109 @@
+├── .dockerignore
+├── .gitignore
+├── compose.yaml
+├── fileTree.js
+├── Dockerfile
+├── output.txt
+├── package-lock.json
+├── package.json
+├── README.Docker.md
+├── README.md
+├── Structures.md
+├── public
+│   ├── favicon.ico
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+│   ├── App.css
+│   ├── App.js
+│   ├── App.test.js
+│   ├── index.js
+│   ├── index.css
+│   ├── LOGO.png
+│   ├── MyColors.json
+│   ├── logo.svg
+│   ├── MyStrings.json
+│   ├── PageTitle.js
+│   ├── reportWebVitals.js
+│   ├── setupTests.js
+│   ├── ApiHandler
+│   │   └── ApiHandler.js
+│   ├── assets
+│   │   ├── font
+│   │   │   ├── CentraNo2-Bold.ttf
+│   │   │   ├── CentraNo2-Book.ttf
+│   │   │   └── CentraNo2-Medium.ttf
+│   │   └── img
+│   │   │   ├── arrow1.svg
+│   │   │   ├── arrow2.svg
+│   │   │   ├── banner-bg.png
+│   │   │   ├── color-sharp2.png
+│   │   │   ├── color-sharp.png
+│   │   │   ├── contact-img.svg
+│   │   │   ├── footer-bg.png
+│   │   │   ├── header-img.svg
+│   │   │   ├── meter1.svg
+│   │   │   ├── logo.svg
+│   │   │   ├── LandingPagePic.png
+│   │   │   ├── meter2.svg
+│   │   │   ├── meter3.svg
+│   │   │   ├── nav-icon1.svg
+│   │   │   ├── nav-icon2.svg
+│   │   │   ├── nav-icon3.svg
+│   │   │   ├── project-img1.png
+│   │   │   ├── project-img2.png
+│   │   │   ├── project-img3.png
+│   │   │   └── team pics
+│   │   │   │   ├── alia.jpeg
+│   │   │   │   ├── fathy.jpeg
+│   │   │   │   ├── matar.jpeg
+│   │   │   │   ├── karim.jpeg
+│   │   │   │   ├── migo.jpeg
+│   │   │   │   └── ziad.jpeg
+│   └── Components
+│   │   ├── Authentication
+│   │   │   ├── Authentication.css
+│   │   │   ├── Authentication.js
+│   │   │   ├── Login.js
+│   │   │   ├── PasswordStrength.jsx
+│   │   │   ├── PasswordStrength.css
+│   │   │   └── Signup.js
+│   │   ├── Button
+│   │   │   ├── Button_Bar.css
+│   │   │   └── Button_Bar.js
+│   │   ├── Chatbot
+│   │   │   ├── ChatItem.jsx
+│   │   │   ├── Chatbot.css
+│   │   │   └── ChatPage.jsx
+│   │   ├── Codefixer
+│   │   │   ├── Codefixer.js
+│   │   │   ├── Codefixer.css
+│   │   │   ├── MainView.css
+│   │   │   └── MainView.js
+│   │   ├── Editor
+│   │   │   └── Editor.js
+│   │   ├── ProtectedRoute
+│   │   │   └── ProtectedRoute.js
+│   │   ├── NavBar
+│   │   │   ├── NavBar.css
+│   │   │   └── NavBar.js
+│   │   └── Landing
+│   │   │   ├── Landing.js
+│   │   │   ├── Contact
+│   │   │   │   └── Contact.js
+│   │   │   ├── Banner
+│   │   │   │   ├── Banner.css
+│   │   │   │   └── Banner.js
+│   │   │   ├── Skills
+│   │   │   │   ├── Skills.css
+│   │   │   │   └── Skills.js
+│   │   │   ├── Team
+│   │   │   │   ├── ProjectCard.js
+│   │   │   │   ├── TeamCard.js
+│   │   │   │   ├── Team.js
+│   │   │   │   └── Team.css
+│   │   │   └── Footer
+│   │   │   │   ├── Footer.css
+│   │   │   │   ├── MailchimpForm.js
+│   │   │   │   ├── Footer.js
+│   │   │   │   └── Newsletter.js
