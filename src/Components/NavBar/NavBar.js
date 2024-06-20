@@ -51,9 +51,7 @@ export const NavBar = () => {
             <Nav.Link
               as={NavLink} // Use NavLink from react-router-dom
               to="/"
-              className={
-                activeLink === "home" ? "active navbar-link" : "navbar-link"
-              }
+              className={activeLink === "home" ? "active navbar-link" : "navbar-link"}
               onClick={() => onUpdateActiveLink("home")}
             >
               Home
@@ -64,11 +62,7 @@ export const NavBar = () => {
                 <Nav.Link
                   as={NavLink} // Use NavLink from react-router-dom
                   to="/codefixer"
-                  className={
-                    activeLink === "CodeFixer"
-                      ? "active navbar-link"
-                      : "navbar-link"
-                  }
+                  className={activeLink === "CodeFixer" ? "active navbar-link" : "navbar-link"}
                   onClick={() => onUpdateActiveLink("CodeFixer")}
                 >
                   Codefixer
@@ -76,11 +70,7 @@ export const NavBar = () => {
                 <Nav.Link
                   as={NavLink} // Use NavLink from react-router-dom
                   to="/Chatbot"
-                  className={
-                    activeLink === "Chatbot"
-                      ? "active navbar-link"
-                      : "navbar-link"
-                  }
+                  className={activeLink === "Chatbot" ? "active navbar-link" : "navbar-link"}
                   onClick={() => onUpdateActiveLink("Chatbot")}
                 >
                   Chatbot

@@ -1,18 +1,17 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { NavBar } from "./Components/NavBar/NavBar.js";
-import { Landing } from "./Components/Landing/Landing.js";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Import BrowserRouter
-import { Chat } from "./Components/Chatbot/ChatPage.jsx";
-import { Authentication } from "./Components/Authentication/Authentication.js";
-
 import React from "react";
-import Codefixer from "./Components/Codefixer/Codefixer";
+import { NavBar } from "./Components/NavBar/NavBar.js";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
+import { Landing } from "./Components/Landing/Landing.js";
+import { Authentication } from "./Components/Authentication/Authentication.js";
+import { Chat } from "./Components/Chatbot/ChatPage.jsx";
+import { Codefixer } from "./Components/Codefixer/Codefixer";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 
 import PageTitle from "./PageTitle.js";
 
