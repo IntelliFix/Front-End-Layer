@@ -204,7 +204,7 @@ export const Chat = () => {
             </Box>
 
             <Box className="chat-input">
-              <textarea
+              <input
                 type="text"
                 ref={inputRef}
                 value={inputText}

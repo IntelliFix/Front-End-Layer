@@ -25,6 +25,7 @@ function MainView() {
   };
 
   const handleButtonClick = async () => {
+    setCommentResult('');
     try {
       setLoading(true);
       console.log(code);

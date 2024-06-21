@@ -4,11 +4,11 @@ import React from "react";
 import { NavBar } from "./Components/NavBar/NavBar.js";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute.js";
 import { Landing } from "./Components/Landing/Landing.js";
 import { Authentication } from "./Components/Authentication/Authentication.js";
 import { Chat } from "./Components/Chatbot/ChatPage.jsx";
-import { Codefixer } from "./Components/Codefixer/Codefixer";
+import Codefixer from "./Components/Codefixer/Codefixer";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
