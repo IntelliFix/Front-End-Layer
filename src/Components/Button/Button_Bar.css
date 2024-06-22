@@ -25,7 +25,7 @@
     width: auto;
   
     margin: 10px;
-    background-color: #ededed;
+    background-color: #1e1e1e;
     display: flex;
     flex-direction: row;
     align-self: center;
@@ -41,10 +41,10 @@
     cursor: pointer;
     font-size: large;
     /* padding: 10px; */
-  
+    color: white;
     margin: 5px;
     border-radius: 10px;
-    background-color: #ededed;
+    background-color: #1e1e1e;
   }
   
   .button-bar button.selected {
