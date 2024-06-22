@@ -8,6 +8,7 @@ import ReactLoading from "react-loading";
 import Highlight from "react-highlight";
 import "highlight.js/styles/atom-one-dark.css"; // You can choose any highlight.js theme you prefer
 import "./Chatbot.css"; // Import the CSS file
+import pyerre from '../../assets/img/team pics/PyErre.png';
 
 export const Chat = () => {
   const inputRef = useRef(null);
@@ -140,6 +141,18 @@ export const Chat = () => {
           >
             <Avatar
               sx={{
+                mx: 'auto',
+                my: 2,
+                height: 60,
+                width: 60,
+                bgcolor: 'transparent', // Set background color to transparent
+              }}
+              src={pyerre}
+              alt="Avatar Image"
+            />
+
+            {/* <Avatar
+              sx={{
                 mx: "auto",
                 my: 2,
                 bgcolor:
@@ -151,9 +164,10 @@ export const Chat = () => {
               }}
             >
               PY
-            </Avatar>
+            </Avatar> */}
+
             <Typography sx={{ mx: "auto", color: "white" }}>
-              Hello, this is PyErre!
+              Hello, this is PyErre The Chatbot!
             </Typography>
             <Typography
               sx={{
