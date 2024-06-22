@@ -64,6 +64,7 @@ function MainView() {
 
       <div className="codefixer-area">
         <div className={`inputs ${mode !== "Corrected" ? "show" : "hide"}`}>
+          <div className="rounded-editor">
           <Editor
             height="430px"
             language="python"
@@ -78,6 +79,7 @@ function MainView() {
               autoClosingBrackets: true,
             }}
           />
+             </div>
           <Box className="chat-input">
             <textarea
               ref={inputRef}
@@ -116,21 +118,24 @@ function MainView() {
             >
               <CircularProgress />
             </Box>
-          ) : (<Editor
+          ) : (
+            <div className="rounded-editor">
+              <Editor
 
-            height="430px"
-            language="python"
-            theme="vs-dark"
-            value={codeResult}
-            onChange={(value) => setCodeResult(value)}
-            options={{
-              inlineSuggest: true,
-              fontSize: "14px",
-              marginBottom: "8px",
-              formatOnType: true,
-              autoClosingBrackets: true,
-            }}
-          />
+height="430px"
+language="python"
+theme="vs-dark"
+value={codeResult}
+onChange={(value) => setCodeResult(value)}
+options={{
+  inlineSuggest: true,
+  fontSize: "14px",
+  marginBottom: "8px",
+  formatOnType: true,
+  autoClosingBrackets: true,
+}}
+/>
+            </div>
           )}
           <Box className="chat-input">
             <textarea
