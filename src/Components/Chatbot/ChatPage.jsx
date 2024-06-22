@@ -139,7 +139,7 @@ export const Chat = () => {
               mx: 3,
             }}
           >
-            <Avatar
+            {/* <Avatar
               sx={{
                 mx: 'auto',
                 my: 2,
@@ -149,9 +149,9 @@ export const Chat = () => {
               }}
               src={pyerre}
               alt="Avatar Image"
-            />
+            /> */}
 
-            {/* <Avatar
+            <Avatar
               sx={{
                 mx: "auto",
                 my: 2,
@@ -164,10 +164,10 @@ export const Chat = () => {
               }}
             >
               PY
-            </Avatar> */}
+            </Avatar>
 
             <Typography sx={{ mx: "auto", color: "white" }}>
-              Hello, this is PyErre The Chatbot!
+              Hello, It's PyErre The Chatbot!
             </Typography>
             <Typography
               sx={{
